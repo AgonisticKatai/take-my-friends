@@ -1,8 +1,14 @@
 import React from 'react'
 
+import NavbarHeader from './Navbar.jsx'
+import Suggestions from './Suggestions'
+
 const Home = () => {
   return (
-    <h1>This is Home</h1>
+    <div>
+      <NavbarHeader />
+      <Suggestions />
+    </div>
   )
 }
 
