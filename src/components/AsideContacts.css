@@ -1,0 +1,12 @@
+.AsideContacts {
+  text-align: right;
+  padding: 10px;
+}
+
+.AsideContacts > h3{
+  padding-right: 15px;
+}
+
+.AsideContacts > h3 > span {
+  color: #337ab7;
+}

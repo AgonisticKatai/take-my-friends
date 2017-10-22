@@ -1,0 +1,11 @@
+.AsideUsers {
+  padding: 10px;
+}
+
+.AsideUsers > h3 {
+  padding-left: 15px;
+}
+
+.AsideUsers > h3 > span {
+  color: #337ab7;
+}

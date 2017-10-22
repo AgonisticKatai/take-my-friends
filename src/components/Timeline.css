@@ -1,0 +1,7 @@
+.Timeline-content {
+  padding: 10px;
+}
+
+.Timeline-content > h3 > span{
+  color: #337ab7;
+}

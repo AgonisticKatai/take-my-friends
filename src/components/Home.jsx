@@ -1,13 +1,13 @@
 import React from 'react'
 
 import NavbarHeader from './Navbar.jsx'
-import Suggestions from './Suggestions'
+import MainSection from './MainSection.jsx'
 
 const Home = () => {
   return (
     <div>
       <NavbarHeader />
-      <Suggestions />
+      <MainSection />
     </div>
   )
 }

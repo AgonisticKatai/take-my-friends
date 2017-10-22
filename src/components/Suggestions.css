@@ -1,3 +1,7 @@
+.SuggestionsContent {
+}
+
+
 @media(max-width: 767px) {
   .thumbnail-suggestion {
     height: 160px; 
@@ -37,8 +41,8 @@
 
   }
   .thumbnail-suggestion > img, .thumbnail-suggestion a > img {
-    width: 200px;
-    height: 200px;
+    max-width: 155px;
+    max-height: 155px;
     margin: 0;
     padding: 9px;
   }
@@ -48,6 +52,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
+  }
+  .glyphicon-hover:hover {
+    color: white;
   }
 }
 
