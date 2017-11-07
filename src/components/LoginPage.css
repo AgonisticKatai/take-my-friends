@@ -1,0 +1,47 @@
+@media (max-width: 580px) {
+
+}
+
+@media (max-width: 768px) {
+  .login-form h1 {
+    font-size: 70px;
+  }
+}
+
+@media (min-width: 769px) {
+  .login-form h1 {
+    font-size: 100px;
+  }
+}
+
+.content-login {
+  background-image: url('./images/photo3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh; 
+}
+.login-form {
+  color: white;
+  text-shadow: 2px 2px black;
+  margin-top: 100px;
+  background-color: rgba(0,0,0,0.6);
+}
+.login-form h1 {
+  font-family: 'Shadows Into Light Two', cursive;
+  text-align: center;
+  margin-bottom: 50px;
+}
+p {
+  text-align: center;
+}
+.linkToRegister {
+  color: white;
+}
+a:hover {
+  color: #ddd;
+  text-decoration: none;
+}
+.loginSubmit {
+  margin-bottom: 50px;
+}
+
