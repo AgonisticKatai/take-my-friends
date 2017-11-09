@@ -1,10 +1,10 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 
-import LoginPage from './LoginPage.jsx'
-import RegisterPage from './RegisterPage.jsx'
-import Home from './Home.jsx'
-import ContactSearch from './ContactSearch.jsx'
+import LoginPage from './LoginPage/LoginPage.jsx'
+import RegisterPage from './RegisterPage/RegisterPage.jsx'
+import Home from './Home/Home.jsx'
+import ContactSearch from './ContactSearch/ContactSearch.jsx'
 
 const Main = props => {
   return (

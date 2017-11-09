@@ -29,7 +29,7 @@ class RegisterPage extends Component {
             <Col sm={8} smOffset={2}>
               <Jumbotron className='register-form'>
                 <h2>User registration</h2>
-                <Form>
+                <Form method='POST' action='http://localhost:3005/register'>
                   <Grid>
                     <Col sm={6}>
                       <ControlLabel>Name</ControlLabel>

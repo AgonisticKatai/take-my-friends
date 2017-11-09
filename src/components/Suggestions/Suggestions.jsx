@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 import {Grid, Row, Col, Thumbnail, Button} from 'react-bootstrap'
 
-import {getUsersData} from '../services/ContactsAPI.jsx'
+import {getUsersData} from '../../services/ContactsAPI.jsx'
 
 import './Suggestions.css'
 

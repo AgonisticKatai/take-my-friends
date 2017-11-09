@@ -1,7 +1,7 @@
 import React from 'react'
 
-import NavbarHeader from './Navbar.jsx'
-import MainSection from './MainSection.jsx'
+import NavbarHeader from '../Navbar/Navbar.jsx'
+import MainSection from '../MainSection/MainSection.jsx'
 
 import './Home.css'
 

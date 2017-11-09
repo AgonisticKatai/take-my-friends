@@ -29,7 +29,7 @@ class LoginPage extends Component {
             <Col xs={12} sm={8} smOffset={2} md={6} mdOffset={3}>
               <Jumbotron className='login-form'>
                 <h1>Take my friends</h1>
-                <Form>
+                <Form method='POST' action='http://localhost:3005/login'>
                   <Grid>
                     <Col xs={12} sm={12} md={12}>
                       <ControlLabel>Email</ControlLabel>

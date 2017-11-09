@@ -2,11 +2,11 @@ import React from 'react'
 
 import {Row, Col} from 'react-bootstrap'
 
-import Suggestions from './Suggestions.jsx'
-import AsideUsers from './AsideUsers.jsx'
-import InputSearchForm from './InputSearchForm.jsx'
-import Timeline from './Timeline.jsx'
-import AsideContacts from './AsideContacts.jsx'
+import Suggestions from '../Suggestions/Suggestions.jsx'
+import AsideUsers from '../AsideUsers/AsideUsers.jsx'
+import InputSearchForm from '../InputSearchForm/InputSearchForm.jsx'
+import Timeline from '../Timeline/Timeline.jsx'
+import AsideContacts from '../AsideContacts/AsideContacts.jsx'
 
 import './MainSection.css'
 

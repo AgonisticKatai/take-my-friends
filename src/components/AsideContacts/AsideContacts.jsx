@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {getUsersData} from '../services/ContactsAPI.jsx'
+import {getUsersData} from '../../services/ContactsAPI.jsx'
 
 import './AsideContacts.css'
 
