@@ -1,16 +1,19 @@
 import React, {Component} from 'react'
 
+import register from '../../services/RegisterService.jsx'
+
 import {Row, Jumbotron, Grid, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
 
 import './RegisterPage.css'
 
 class RegisterPage extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {}
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
   handleChange (e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -19,6 +22,8 @@ class RegisterPage extends Component {
 
   handleSubmit (e) {
     e.preventDefault()
+    register(this.state.email, this.state.password)
+      .then(response => console.log(this.state.email, this.state.password))
   }
 
   render () {
@@ -26,35 +31,13 @@ class RegisterPage extends Component {
       <div className='content-register'>
         <Grid>
           <Row>
-            <Col sm={8} smOffset={2}>
+            <Col xs={12} sm={8} smOffset={2} md={6} mdOffset={3}>
               <Jumbotron className='register-form'>
                 <h2>User registration</h2>
-                <Form method='POST' action='http://localhost:3005/register'>
-                  <Grid>
-                    <Col sm={6}>
-                      <ControlLabel>Name</ControlLabel>
-                      <FormGroup controlId='formHorizontalName'>
-                        <FormControl
-                          type='text'
-                          placeholder='Enter name'
-                          name='name' data-name={this.handleChange}
-                          value={this.state.name}
-                          onChange={this.handleChange} />
-                      </FormGroup>
-                    </Col>
-                    <Col sm={6}>
-                      <ControlLabel>Lastname</ControlLabel>
-                      <FormGroup controlId='formHorizontalLastname'>
-                        <FormControl
-                          type='text'
-                          placeholder='Enter lastname'
-                          name='lastname' data-lastname={this.handleChange}
-                          value={this.state.lastname}
-                          onChange={this.handleChange} />
-                      </FormGroup>
-                    </Col>
-                    <Col sm={6}>
-                      <ControlLabel>Email</ControlLabel>
+                <Form onSubmit={this.handleSubmit}>
+                  <Grid>                  
+                    <Col sm={12}>
+                      <ControlLabel>Enter your email for create an account</ControlLabel>
                       <FormGroup controlId='formHorizontalEmail'>
                         <FormControl
                           type='email'
@@ -64,20 +47,8 @@ class RegisterPage extends Component {
                           onChange={this.handleChange} />
                       </FormGroup>
                     </Col>
-                    <Col sm={6}>
-                      <ControlLabel>Username</ControlLabel>
-                      <FormGroup controlId='formHorizontalUsername'>
-                        <FormControl
-                          type='text'
-                          placeholder='Enter username'
-                          name='username'
-                          data-username={this.handleChange}
-                          value={this.state.username}
-                          onChange={this.handleChange} />
-                      </FormGroup>
-                    </Col>
-                    <Col sm={6}>
-                      <ControlLabel>Password</ControlLabel>
+                    <Col sm={12}>
+                      <ControlLabel>Enter an acces password</ControlLabel>
                       <FormGroup controlId='formHorizontalPassword'>
                         <FormControl
                           type='password'
@@ -85,41 +56,6 @@ class RegisterPage extends Component {
                           name='password'
                           data-password={this.handleChange}
                           value={this.state.password}
-                          onChange={this.handleChange} />
-                      </FormGroup>
-                    </Col>
-                    <Col sm={6}>
-                      <ControlLabel>Confirm password</ControlLabel>
-                      <FormGroup controlId='formHorizontalConfirm_password'>
-                        <FormControl
-                          type='password'
-                          placeholder='Confirm password'
-                          name='confirm_password'
-                          data-confirm_password={this.handleChange}
-                          value={this.state.confirm_password}
-                          onChange={this.handleChange} />
-                      </FormGroup>
-                    </Col>
-                    <Col sm={6}>
-                      <ControlLabel>Ocupation</ControlLabel>
-                      <FormGroup controlId='formHorizontalOcupation'>
-                        <FormControl
-                          type='text'
-                          placeholder='Enter ocupation'
-                          name='ocupation'
-                          data-ocupation={this.handleChange}
-                          value={this.state.ocupation}
-                          onChange={this.handleChange} />
-                      </FormGroup>
-                    </Col>
-                    <Col sm={6}>
-                      <ControlLabel>Profile image</ControlLabel>
-                      <FormGroup controlId='formHorizontalProfile_image'>
-                        <FormControl
-                          type='file'
-                          name='profile_image'
-                          data-profile_image={this.handleChange}
-                          value={this.state.profile_image}
                           onChange={this.handleChange} />
                       </FormGroup>
                     </Col>

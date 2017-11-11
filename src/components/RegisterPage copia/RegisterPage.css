@@ -1,0 +1,24 @@
+.content-register {
+  background-image: url('../images/photo3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: 50px;
+}
+
+.register-form {
+  color: white;
+  text-shadow: 2px 2px black;
+  margin-top: 100px;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.registerSubmit {
+margin-top: 50px;
+}

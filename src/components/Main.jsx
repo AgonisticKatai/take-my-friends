@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {Switch, Route} from 'react-router-dom'
 
 import LoginPage from './LoginPage/LoginPage.jsx'
@@ -6,7 +6,7 @@ import RegisterPage from './RegisterPage/RegisterPage.jsx'
 import Home from './Home/Home.jsx'
 import ContactSearch from './ContactSearch/ContactSearch.jsx'
 
-const Main = props => {
+const Main = () => {
   return (
     <div>
       <Switch>
