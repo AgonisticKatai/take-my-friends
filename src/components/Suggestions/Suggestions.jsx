@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
-
 import {Grid, Row, Col, Thumbnail, Button} from 'react-bootstrap'
-
 import {getUsersData} from '../../services/ContactsAPI.jsx'
 
 import './Suggestions.css'
@@ -40,6 +38,7 @@ class SuggestionsHome extends Component {
       })
     })
   }
+
   render () {
     return (
       <Grid>
@@ -52,7 +51,7 @@ class SuggestionsHome extends Component {
                   <h3>{contact.lastname}</h3>
                   <p>{contact.occupation}</p>
                   <p>
-                    <Button bsSize='sm' bsStyle='default' block >profile</Button>
+                    <Button bsSize='sm' bsStyle='default' block>profile</Button>
                     <Button bsSize='sm' bsStyle='primary' block>message</Button>
                   </p>
                 </Thumbnail>

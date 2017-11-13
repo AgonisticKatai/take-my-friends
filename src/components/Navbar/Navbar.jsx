@@ -27,9 +27,7 @@ const NavbarHeader = () => {
         </Nav>
         <Nav pullRight>
           <NavItem eventKey={1} href='#'>My account</NavItem>
-          <NavItem eventKey={2} href='#'>
-            <div className='g-signin2' data-onsuccess='onSignIn' data-theme='dark' />
-          </NavItem>
+          <NavItem eventKey={2} href='#'>Login</NavItem>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

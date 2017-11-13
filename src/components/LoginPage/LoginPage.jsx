@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
+import toastr from 'toastr'
+import {Row, Jumbotron, Grid, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
 
-import login from '../../services/AuthService.jsx'
 import { saveToken, getToken, removeToken } from '../../services/StorageService.jsx'
 
-import {Row, Jumbotron, Grid, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
+import login from '../../services/AuthService.jsx'
 
 import './LoginPage.css'
 
@@ -27,9 +28,11 @@ class LoginPage extends Component {
     login(this.state.email, this.state.password)
       .then( token => {
         saveToken(token)
+        toastr.success('Login succesfull!!')
         this.setState({ token })
       })
     .then(() => console.log('token saved!!'))
+    .catch(() => toastr.error('Invalid username or password'))
   }
 
   isAuthenticated () {
@@ -88,7 +91,7 @@ class LoginPage extends Component {
                             </Button>
                           </FormGroup>
                         </Col>
-                        <p><a className='linkToRegister' href='/register'>Not registered? Create an account!</a></p>
+                        <p><a className='linkToRegister' href='/register'>Not registered? Create an account!</a></p>               
                       </Grid>
                     </Form>
                   </Jumbotron>

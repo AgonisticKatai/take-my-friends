@@ -5,4 +5,5 @@ function register(email, password) {
   return axios.post(url, { email, password })
     .then(response => console.log('user registered...'))
 }
- export default register
+
+export default register
