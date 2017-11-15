@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {getUsersData} from '../../services/ContactsAPI.jsx'
+import {getUsersData} from '../../services/ContactsAPI.js'
 
 import './AsideContacts.css'
 
@@ -9,30 +9,19 @@ class AsideContacts extends Component {
     super()
     this.state = {
       contacts: [{
-        id: '',
         name: '',
-        lastname: '',
-        email: '',
-        profile_img: '',
-        occupation: '',
-        country: ''
+        lastname: ''
       }]
     }
   }
-  componentWillMount () {
+  componentDidMount () {
     getUsersData()
     .then(data => {
-      console.log(data)
       this.setState({
-        contacts: data.map(function (contact) {
+        contacts: data.map(contact => {
           return ({
-            id: contact.id,
-            name: contact.name,
-            lastname: contact.lastname,
-            email: contact.email,
-            profile_img: contact.profile_img,
-            occupation: contact.occupation,
-            country: contact.country
+            name: contact.name && contact.name || '',
+            lastname: contact.lastname && contact.lastname || 'not defined'
           })
         })
       })
@@ -43,9 +32,9 @@ class AsideContacts extends Component {
       <div className='AsideContacts'>
         <h3>My contacts (<span>{this.state.contacts.length}</span>)</h3>
         <ul className='nav nav-pills nav-stacked'>
-          {this.state.contacts.map(function (userData) {
+          {this.state.contacts.map((userData, index) => {
             return (
-              <li role='presentation'><a href='#'>{userData.name + ' ' + userData.lastname}</a></li>
+              <li key={index} role='presentation'><a href='#'>{userData.name + ' ' + userData.lastname}</a></li>
             )
           })}
         </ul>

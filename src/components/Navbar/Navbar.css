@@ -2,3 +2,8 @@
   background-image: none;
   border-radius: inherit;
 }
+
+.navbar-profile-image {
+  width: 55px;
+  height: 55px;
+}

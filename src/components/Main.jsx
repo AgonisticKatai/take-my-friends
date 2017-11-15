@@ -5,6 +5,7 @@ import LoginPage from './LoginPage/LoginPage.jsx'
 import RegisterPage from './RegisterPage/RegisterPage.jsx'
 import Home from './Home/Home.jsx'
 import ContactSearch from './ContactSearch/ContactSearch.jsx'
+import MyAccount from './MyAccount/MyAccount.jsx'
 
 const Main = () => {
   return (
@@ -13,7 +14,7 @@ const Main = () => {
         <Route path='/login' component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
         <Route path='/home' component={Home} />
-        <Route path='/contact_search:query' component={ContactSearch} />
+        <Route path='/account' component={MyAccount} />
       </Switch>
     </div>
   )

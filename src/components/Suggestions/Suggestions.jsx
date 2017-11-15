@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Grid, Row, Col, Thumbnail, Button} from 'react-bootstrap'
-import {getUsersData} from '../../services/ContactsAPI.jsx'
+import {getUsersData} from '../../services/ContactsAPI.js'
 
 import './Suggestions.css'
 
@@ -19,20 +19,20 @@ class SuggestionsHome extends Component {
       }]
     }
   }
-  componentWillMount () {
+  componentDidMount () {
     getUsersData()
     .then(data => {
       console.log(data)
       this.setState({
         contacts: data.map(function (contact) {
           return ({
-            id: contact.id,
-            name: contact.name,
-            lastname: contact.lastname,
-            email: contact.email,
-            profile_img: contact.profile_img,
-            occupation: contact.occupation,
-            country: contact.country
+            id: contact._id && contact._id || '',
+            name: contact.name && contact.name || '',
+            lastname: contact.lastname && contact.lastname || '',
+            email: contact.email && contact.email || '',
+            profile_img: contact.profile_img && contact.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
+            occupation: contact.occupation && contact.occupation || '',
+            country: contact.country && contact.country || ''
           })
         })
       })
@@ -43,9 +43,9 @@ class SuggestionsHome extends Component {
     return (
       <Grid>
         <Row>
-          {this.state.contacts.map(contact => {
+          {this.state.contacts.map((contact, index) => {
             return (
-              <Col xs={6} md={2}>
+              <Col key={index} xs={6} md={2}>
                 <Thumbnail className='thumbnail-suggestion' src={contact.profile_img} alt={contact.name}>
                   <h3>{contact.name}</h3>
                   <h3>{contact.lastname}</h3>

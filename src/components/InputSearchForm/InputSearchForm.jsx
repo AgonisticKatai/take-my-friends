@@ -34,7 +34,6 @@ class InputSearchForm extends Component {
               autoFocus
               placeholder='Describe what you are looking for...'
               name='occupationSearch'
-              data-id={this.handleSubmit}
               onChange={this.handleChange}
               value={this.state.occupationSearch}
             />

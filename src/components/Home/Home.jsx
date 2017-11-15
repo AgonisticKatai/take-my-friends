@@ -7,6 +7,7 @@ import MainSection from '../MainSection/MainSection.jsx'
 import './Home.css'
 
 class Home extends Component {
+  
   isAuthenticated () {
     const token = localStorage.getItem('token')
     return token

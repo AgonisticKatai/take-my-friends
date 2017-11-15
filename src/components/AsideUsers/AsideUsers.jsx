@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {getUsersData} from '../../services/ContactsAPI.jsx'
+import {getUsersData} from '../../services/ContactsAPI.js'
 
 import './AsideUsers.css'
 
@@ -9,30 +9,17 @@ class AsideUsers extends Component {
     super()
     this.state = {
       contacts: [{
-        id: '',
-        name: '',
-        lastname: '',
-        email: '',
-        profile_img: '',
-        occupation: '',
-        country: ''
+        occupation: ''
       }]
     }
   }
-  componentWillMount () {
+  componentDidMount () {
     getUsersData()
     .then(data => {
-      console.log(data)
       this.setState({
-        contacts: data.map(function (contact) {
+        contacts: data.map(contact => {
           return ({
-            id: contact.id,
-            name: contact.name,
-            lastname: contact.lastname,
-            email: contact.email,
-            profile_img: contact.profile_img,
-            occupation: contact.occupation,
-            country: contact.country
+            occupation: contact.occupation && contact.occupation || 'not defined'
           })
         })
       })
@@ -43,9 +30,9 @@ class AsideUsers extends Component {
       <div className='AsideUsers'>
         <h3>Categories (<span>{this.state.contacts.length}</span>)</h3>
         <ul className='nav nav-pills nav-stacked'>
-          {this.state.contacts.map(function (userData) {
+          {this.state.contacts.map((userData, index) => {
             return (
-              <li role='presentation'><a href='#'>{userData.occupation}</a></li>
+              <li key={index} role='presentation'><a href='#'>{userData.occupation}</a></li>
             )
           })}
         </ul>

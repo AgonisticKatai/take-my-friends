@@ -3,9 +3,8 @@ import {Redirect} from 'react-router-dom'
 import toastr from 'toastr'
 import {Row, Jumbotron, Grid, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
 
-import { saveToken, getToken, removeToken } from '../../services/StorageService.jsx'
-
-import login from '../../services/AuthService.jsx'
+import { saveToken, getToken, removeToken } from '../../services/StorageService.js'
+import login from '../../services/AuthService.js'
 
 import './LoginPage.css'
 
@@ -61,7 +60,6 @@ class LoginPage extends Component {
                               placeholder='Enter email...'
                               name='email'
                               bsSize='md'
-                              data-email={this.handleChange}
                               value={this.state.email}
                               onChange={this.handleChange} />
                           </FormGroup>
@@ -74,7 +72,6 @@ class LoginPage extends Component {
                               placeholder='Enter password...'
                               name='password'
                               bsSize='md'
-                              data-password={this.handleChange}
                               value={this.state.password}
                               onChange={this.handleChange} />
                           </FormGroup>

@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import {Row, Jumbotron, Grid, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
 
-import {saveToken, getToken} from '../../services/StorageService.jsx'
-import register from '../../services/RegisterService.jsx'
-import login from '../../services/AuthService.jsx'
+import {saveToken, getToken} from '../../services/StorageService.js'
+import register from '../../services/RegisterService.js'
+import login from '../../services/AuthService.js'
 
 import './RegisterPage.css'
 
@@ -70,7 +70,6 @@ class RegisterPage extends Component {
                               type='password'
                               placeholder='Enter password'
                               name='password'
-                              data-password={this.handleChange}
                               value={this.state.password}
                               onChange={this.handleChange} />
                           </FormGroup>

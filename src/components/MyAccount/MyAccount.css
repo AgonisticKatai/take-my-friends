@@ -1,0 +1,20 @@
+.profile-image {
+  width: 150px;
+  height: 150px; 
+}
+
+.form-my-account h3, .form-my-account h4 {
+  color: #555;
+}
+
+.form-my-account h6 {
+  color: #2b6698;
+  margin-bottom: 50px;
+  font-size: 14px;
+}
+
+.form-my-account {
+  margin-top: 100px;
+/*  border: 2px solid #2b6698;
+  border-radius: 10px;*/
+}
