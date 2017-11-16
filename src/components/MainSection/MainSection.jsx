@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Row, Col} from 'react-bootstrap'
+import {Row, Grid, Col} from 'react-bootstrap'
 
 import Suggestions from '../Suggestions/Suggestions.jsx'
 import AsideUsers from '../AsideUsers/AsideUsers.jsx'
@@ -12,21 +12,21 @@ import './MainSection.css'
 
 const MainSection = () => {
   return (
-    <div>
+    <Grid>
       <Suggestions />
-      <Row className='no-padding'>
-        <Col xs={4} md={2} className='no-padding'>
+      <Row >
+        <Col xs={3} >
           <AsideUsers />
-        </Col>
-        <Col xs={4} md={8} className='no-padding'>
-          <InputSearchForm />
-          <Timeline />
-        </Col>
-        <Col xs={4} md={2} className='no-padding'>
           <AsideContacts />
         </Col>
+        <Col xs={7} >
+          <InputSearchForm />
+        </Col>
+        <Col xs={9} >
+          <Timeline />
+        </Col>
       </Row>
-    </div>
+    </Grid>
   )
 }
 

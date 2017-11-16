@@ -1,7 +1,17 @@
 .Timeline-content {
+/*  border-top: 5px solid #337ab7;*/
   padding: 10px;
 }
 
+.Timeline-content > h3 {
+  padding-bottom: 15px;
+  border-bottom: 3px solid #337ab7;
+}
+
 .Timeline-content > h3 > span{
-  color: #337ab7;
+  color: #337ab7; 
+}
+
+.timeline-messages {
+  margin-top: 30px;
 }

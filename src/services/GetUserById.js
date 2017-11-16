@@ -2,9 +2,8 @@ import axios from 'axios'
 
 const token = localStorage.getItem('token')
 
-export function GetUserProfile () {
-  const url = 'http://localhost:3005/user'
-  console.log('token api petition page...' + token)
+export function GetUserById (id) {
+  const url = `http://localhost:3005/user/${id}`
   return axios.get(url, 
     {
     headers : {

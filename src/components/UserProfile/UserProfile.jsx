@@ -2,14 +2,14 @@ import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import {Row, Grid, Image, InputGroup, Glyphicon, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
 
-import {GetUserProfile} from '../../services/GetUserProfile.js'
-import {UpdateProfile} from '../../services/UpdateProfile.js'
+import {GetUserById} from '../../services/GetUserById.js'
+import {AddFriend} from '../../services/AddFriend.js'
 
 import NavbarHeader from '../Navbar/Navbar.jsx'
 
-import './MyAccount.css'
+import './UserProfile.css'
 
-class MyAccount extends Component {
+class UserProfile extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -17,14 +17,15 @@ class MyAccount extends Component {
       lastname: '',
       email: '',
       profile_img: '',
-      occupation: ''
+      occupation: '',
+      friends: ''
     }
-    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentWillMount() {
-    GetUserProfile()
+    const {id} = this.props.match.params
+    GetUserById(id)
     .then(user => {
       this.setState({
         id: user._id && user._id || '',
@@ -33,21 +34,17 @@ class MyAccount extends Component {
         email: user.email && user.email || '',
         profile_img: user.profile_img && user.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
         occupation: user.occupation && user.occupation || '',
-        country: user.country && user.country || ''
+        country: user.country && user.country || '',
+        friends: user.friends && user.friends || ''
       })
     })
   }
 
-  handleChange (e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
   handleSubmit (e) {
+    const {id} = this.props.match.params
     e.preventDefault()
-    UpdateProfile(this.state.name, this.state.lastname, this.state.email, this.state.profile_img, this.state.occupation)
-    .then(() => console.log('profile updated...'))
+    AddFriend(id)
+    .then(() => console.log('friend added...'))
   }
   
   isAuthenticated () {
@@ -84,7 +81,7 @@ class MyAccount extends Component {
                             placeholder='Enter name'
                             name='name'
                             value={this.state.name}
-                            onChange={this.handleChange} 
+                            disabled
                           />                       
                         </InputGroup>
                       </FormGroup>
@@ -101,7 +98,7 @@ class MyAccount extends Component {
                             placeholder='Enter lastname'
                             name='lastname'
                             value={this.state.lastname}
-                            onChange={this.handleChange}
+                            disabled
                           />
                         </InputGroup>
                       </FormGroup>
@@ -118,7 +115,7 @@ class MyAccount extends Component {
                             placeholder='Enter email'
                             name='email'
                             value={this.state.email}
-                            onChange={this.handleChange}
+                            disabled
                           />
                         </InputGroup>
                       </FormGroup>
@@ -135,7 +132,7 @@ class MyAccount extends Component {
                             placeholder='Enter occupation'
                             name='occupation'
                             value={this.state.occupation}
-                            onChange={this.handleChange}
+                            disabled
                           />
                         </InputGroup>
                       </FormGroup>
@@ -151,7 +148,7 @@ class MyAccount extends Component {
                             type='text'
                             name='profile_img'
                             value={this.state.profile_img}
-                            onChange={this.handleChange}
+                            disabled
                           />
                         </InputGroup>
                       </FormGroup>
@@ -163,7 +160,7 @@ class MyAccount extends Component {
                           bsStyle='primary'
                           bsSize='md'
                           block>
-                          Update profile
+                          Add to my friends
                         </Button>
                       </FormGroup>
                     </Col>
@@ -179,4 +176,4 @@ class MyAccount extends Component {
   } 
 }
 
-export default MyAccount
+export default UserProfile

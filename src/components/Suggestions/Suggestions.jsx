@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
+
+import {Redirect} from 'react-router-dom'
+
 import {Grid, Row, Col, Thumbnail, Button} from 'react-bootstrap'
+
 import {getUsersData} from '../../services/ContactsAPI.js'
 
 import './Suggestions.css'
@@ -8,18 +12,20 @@ class SuggestionsHome extends Component {
   constructor () {
     super()
     this.state = {
+      id: '',
+      fireRedirect: false,
       contacts: [{
         id: '',
         name: '',
         lastname: '',
-        email: '',
         profile_img: '',
         occupation: '',
-        country: ''
+        redirect: false
       }]
     }
+    this.handleProfile = this.handleProfile.bind(this)
   }
-  componentDidMount () {
+  componentWillMount () {
     getUsersData()
     .then(data => {
       console.log(data)
@@ -29,37 +35,47 @@ class SuggestionsHome extends Component {
             id: contact._id && contact._id || '',
             name: contact.name && contact.name || '',
             lastname: contact.lastname && contact.lastname || '',
-            email: contact.email && contact.email || '',
             profile_img: contact.profile_img && contact.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-            occupation: contact.occupation && contact.occupation || '',
-            country: contact.country && contact.country || ''
+            occupation: contact.occupation && contact.occupation || ''
           })
         })
       })
     })
   }
+  
+  handleProfile (id) {
+    this.setState({ fireRedirect: true, id: id })
+  }
+
+  componentWillReceiveProps () {
+    this.setState({
+      id: '',
+      fireRedirect: false
+    })
+  }
 
   render () {
+    const { fireRedirect, id} = this.state
+    console.log(id)
     return (
-      <Grid>
-        <Row>
-          {this.state.contacts.map((contact, index) => {
-            return (
-              <Col key={index} xs={6} md={2}>
-                <Thumbnail className='thumbnail-suggestion' src={contact.profile_img} alt={contact.name}>
-                  <h3>{contact.name}</h3>
-                  <h3>{contact.lastname}</h3>
-                  <p>{contact.occupation}</p>
-                  <p>
-                    <Button bsSize='sm' bsStyle='default' block>profile</Button>
-                    <Button bsSize='sm' bsStyle='primary' block>message</Button>
-                  </p>
-                </Thumbnail>
-              </Col>
-            )
-          })}
-        </Row>
-      </Grid>
+      <Row>
+        {this.state.contacts.map((contact, index) => {
+          return (
+            <Col key={index} xs={6} md={2}>
+              <Thumbnail className='thumbnail-suggestion' src={contact.profile_img} alt={contact.name}>
+                <h3>{contact.name}</h3>
+                <h3>{contact.lastname}</h3>
+                <p>{contact.occupation}</p>
+                <p>
+                  <Button type='submit' onClick={() => this.handleProfile(contact.id)} bsSize='sm' bsStyle='default' block>profile</Button>
+                  <Button type='submit' onClick={() => this.handleProfile(contact.id)} bsSize='sm' bsStyle='primary' block>message</Button>
+                </p>
+              </Thumbnail>
+            </Col>
+          )
+        })}
+        {fireRedirect && id && <Redirect to={`/profile/${id}`} push />}
+      </Row>
     )
   }
 }

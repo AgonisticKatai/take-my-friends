@@ -20,7 +20,7 @@ class NavbarHeader extends Component {
     this.logOut = this.logOut.bind(this)
   }
 
-  componentDidMount () {
+  componentWillMount () {
     GetUserProfile()
     .then(user => {
       this.setState({
@@ -60,11 +60,13 @@ class NavbarHeader extends Component {
             <LinkContainer to='/account'>
               <NavItem eventKey={4}>My account</NavItem>
             </LinkContainer>  
-            <LinkContainer to='/home'>
+            <LinkContainer to='/login'>
               <NavItem eventKey={5} onClick={this.logOut}>Logout</NavItem>
             </LinkContainer>          
-            <NavItem><p>Logged as {this.state.name} {this.state.lastname}</p></NavItem>
-            <Image src={this.state.profile_img} className='navbar-profile-image' />        
+            <NavItem>Logged as {this.state.name} {this.state.lastname}</NavItem>
+            <LinkContainer to='/account'>
+              <Image src={this.state.profile_img} className='navbar-profile-image' /> 
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

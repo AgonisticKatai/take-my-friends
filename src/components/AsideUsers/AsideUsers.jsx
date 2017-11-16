@@ -13,7 +13,7 @@ class AsideUsers extends Component {
       }]
     }
   }
-  componentDidMount () {
+  componentWillMount () {
     getUsersData()
     .then(data => {
       this.setState({

@@ -11,7 +11,11 @@ import './LoginPage.css'
 class LoginPage extends Component {
   constructor () {
     super()
-    this.state = {}
+    this.state = {
+      token: false,
+      email: '',
+      password: ''
+    }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -28,19 +32,15 @@ class LoginPage extends Component {
       .then( token => {
         saveToken(token)
         toastr.success('Login succesfull!!')
-        this.setState({ token })
       })
-    .then(() => console.log('token saved!!'))
+    .then(() => console.log('token saved...'))
+    .then(() => this.setState({token: true}))
     .catch(() => toastr.error('Invalid username or password'))
   }
 
-  isAuthenticated () {
-    const token = localStorage.getItem('token')
-    return token
-  }
-
   render () {
-    const isAlreadyAuthenticated = this.isAuthenticated()
+    const isAlreadyAuthenticated = this.state.token
+    console.log(isAlreadyAuthenticated)
     return (
       <div>
         {isAlreadyAuthenticated ? <Redirect to={{pathname: '/home'}} /> : (

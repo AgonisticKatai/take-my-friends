@@ -28,7 +28,7 @@ class InputSearchForm extends Component {
         <h3>Do you need someone? a friend can help you!</h3>
         <FormGroup controlId='formBasicText' >
           <ControlLabel>Do you need a lawyer? or a teacher? or do you need a nurse? Find it among yours friends!</ControlLabel>
-          <InputGroup bsSize='large'>
+          <InputGroup bsSize='large' className='inputSearch'>
             <FormControl
               type='text'
               autoFocus
@@ -37,10 +37,10 @@ class InputSearchForm extends Component {
               onChange={this.handleChange}
               value={this.state.occupationSearch}
             />
-            <FormControl.Feedback />
-            <HelpBlock>example: Lawyer, Developer, Doctor...</HelpBlock>
+            <FormControl.Feedback/>
+            <HelpBlock >example: Lawyer, Developer, Doctor...</HelpBlock>
             <InputGroup.Button className='ButtonSubmit'>
-              <Button bsStyle='primary' type='submit'>Find It!</Button>
+              <Button bsStyle='default' type='submit'>Find It!</Button>
             </InputGroup.Button>
           </InputGroup>
         </FormGroup>
