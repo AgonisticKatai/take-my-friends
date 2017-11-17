@@ -1,4 +1,11 @@
-.SuggestionsContent {
+.suggestionsCarrusel{
+  white-space: nowrap;
+  overflow: auto;
+}
+
+.suggestionsCarrusel .thumbnail-suggestion {
+  display: inline-block;
+  margin-right: 30px;
 }
 
 
@@ -26,7 +33,7 @@
 }
 
 @media(min-width: 768px) {
-  .thumbnail-suggestion {
+  .thumbnail-suggestion {    
     margin-top: 100px;
   }
   .thumbnail-suggestion h3 {

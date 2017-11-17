@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {getUsersData} from '../../services/ContactsAPI.js'
+import {getFriends} from '../../services/GetFriends.js'
 
 import './AsideContacts.css'
 
@@ -16,7 +16,7 @@ class AsideContacts extends Component {
     }
   }
   componentWillMount () {
-    getUsersData()
+    getFriends()
     .then(data => {
       this.setState({
         contacts: data.map(contact => {

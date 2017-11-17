@@ -12,21 +12,24 @@ import './MainSection.css'
 
 const MainSection = () => {
   return (
-    <Grid>
+    <div>
+      <Grid>
       <Suggestions />
-      <Row >
-        <Col xs={3} >
-          <AsideUsers />
-          <AsideContacts />
-        </Col>
-        <Col xs={7} >
-          <InputSearchForm />
-        </Col>
-        <Col xs={9} >
-          <Timeline />
-        </Col>
-      </Row>
-    </Grid>
+
+        <Row >
+          <Col xs={3} >
+            <AsideUsers />
+            <AsideContacts />
+          </Col>
+          <Col xs={7} >
+            <InputSearchForm />
+          </Col>
+          <Col xs={9} >
+            <Timeline />
+          </Col>
+        </Row>
+      </Grid>
+    </div>   
   )
 }
 

@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom'
 
 import {Grid, Row, Col, Thumbnail, Button} from 'react-bootstrap'
 
-import {getUsersData} from '../../services/ContactsAPI.js'
+import {getAllUsers} from '../../services/GetAllUsers.js'
 
 import './Suggestions.css'
 
@@ -26,7 +26,7 @@ class SuggestionsHome extends Component {
     this.handleProfile = this.handleProfile.bind(this)
   }
   componentWillMount () {
-    getUsersData()
+    getAllUsers()
     .then(data => {
       console.log(data)
       this.setState({
@@ -56,26 +56,23 @@ class SuggestionsHome extends Component {
 
   render () {
     const { fireRedirect, id} = this.state
-    console.log(id)
     return (
-      <Row>
+      <div className='suggestionsCarrusel'>
         {this.state.contacts.map((contact, index) => {
           return (
-            <Col key={index} xs={6} md={2}>
-              <Thumbnail className='thumbnail-suggestion' src={contact.profile_img} alt={contact.name}>
-                <h3>{contact.name}</h3>
-                <h3>{contact.lastname}</h3>
-                <p>{contact.occupation}</p>
-                <p>
-                  <Button type='submit' onClick={() => this.handleProfile(contact.id)} bsSize='sm' bsStyle='default' block>profile</Button>
-                  <Button type='submit' onClick={() => this.handleProfile(contact.id)} bsSize='sm' bsStyle='primary' block>message</Button>
-                </p>
-              </Thumbnail>
-            </Col>
+            <Thumbnail className='thumbnail-suggestion' src={contact.profile_img} alt={contact.name}>
+              <h3>{contact.name}</h3>
+              <h3>{contact.lastname}</h3>
+              <p>{contact.occupation}</p>
+              <p>
+                <Button type='submit' onClick={() => this.handleProfile(contact.id)} bsSize='sm' bsStyle='default' block>profile</Button>
+                <Button type='submit' onClick={() => this.handleProfile(contact.id)} bsSize='sm' bsStyle='primary' block>message</Button>
+              </p>
+            </Thumbnail>
           )
         })}
         {fireRedirect && id && <Redirect to={`/profile/${id}`} push />}
-      </Row>
+      </div>
     )
   }
 }

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const token = localStorage.getItem('token')
 
-export function getUsersData () {
+export function getAllUsers () {
   const url = 'http://localhost:3005/users'
   return axios.get(url, 
     {
