@@ -24,7 +24,7 @@ class NavbarHeader extends Component {
     GetUserProfile()
     .then(user => {
       this.setState({
-        profile_img: user.profile_img,
+        profile_img: user.profile_img && user.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
         name: user.name,
         lastname: user.lastname,
       })
@@ -63,7 +63,7 @@ class NavbarHeader extends Component {
             <LinkContainer to='/login'>
               <NavItem eventKey={5} onClick={this.logOut}>Logout</NavItem>
             </LinkContainer>          
-            <NavItem>Logged as {this.state.name} {this.state.lastname}</NavItem>
+            <NavItem>{this.state.name && this.state.lastname ? `Logged as ${this.state.name} ${this.state.lastname}` : ''}</NavItem>
             <LinkContainer to='/account'>
               <Image src={this.state.profile_img} className='navbar-profile-image' /> 
             </LinkContainer>

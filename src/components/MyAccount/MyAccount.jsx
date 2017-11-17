@@ -13,6 +13,7 @@ class MyAccount extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      fireRedirect: false,
       name: '',
       lastname: '',
       email: '',
@@ -47,15 +48,17 @@ class MyAccount extends Component {
   handleSubmit (e) {
     e.preventDefault()
     UpdateProfile(this.state.name, this.state.lastname, this.state.email, this.state.profile_img, this.state.occupation)
-    .then(() => console.log('profile updated...'))
+    .then(() => {this.setState({ fireRedirect: true })})
   }
   
   isAuthenticated () {
     const token = localStorage.getItem('token')
+    console.log('token in my account: ' + token)
     return token
   }
 
   render() {
+    const { fireRedirect } = this.state
     const isAlreadyAuthenticated = this.isAuthenticated()
     return (
       <div>
@@ -171,6 +174,7 @@ class MyAccount extends Component {
                 </Col>
               </Row>
             </Grid>
+            {fireRedirect && <Redirect to={'/home'} push />}
           </div>
         ) : <Redirect to={{pathname: '/login'}} />
         }

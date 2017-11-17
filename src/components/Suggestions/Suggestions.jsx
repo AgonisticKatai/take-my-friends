@@ -47,13 +47,6 @@ class SuggestionsHome extends Component {
     this.setState({ fireRedirect: true, id: id })
   }
 
-  componentWillReceiveProps () {
-    this.setState({
-      id: '',
-      fireRedirect: false
-    })
-  }
-
   render () {
     const { fireRedirect, id} = this.state
     return (

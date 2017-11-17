@@ -31,16 +31,14 @@ class LoginPage extends Component {
     login(this.state.email, this.state.password)
       .then( token => {
         saveToken(token)
+        this.setState({token: true})
         toastr.success('Login succesfull!!')
       })
-    .then(() => console.log('token saved...'))
-    .then(() => this.setState({token: true}))
     .catch(() => toastr.error('Invalid username or password'))
   }
 
   render () {
     const isAlreadyAuthenticated = this.state.token
-    console.log(isAlreadyAuthenticated)
     return (
       <div>
         {isAlreadyAuthenticated ? <Redirect to={{pathname: '/home'}} /> : (
@@ -57,6 +55,7 @@ class LoginPage extends Component {
                           <FormGroup>
                             <FormControl
                               type='email'
+                              autoFocus
                               placeholder='Enter email...'
                               name='email'
                               bsSize='md'

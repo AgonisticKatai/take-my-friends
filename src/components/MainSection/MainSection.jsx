@@ -15,7 +15,6 @@ const MainSection = () => {
     <div>
       <Grid>
       <Suggestions />
-
         <Row >
           <Col xs={3} >
             <AsideUsers />

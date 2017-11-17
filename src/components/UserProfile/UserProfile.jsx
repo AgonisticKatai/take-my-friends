@@ -13,6 +13,7 @@ class UserProfile extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      fireRedirect: false,
       name: '',
       lastname: '',
       email: '',
@@ -44,7 +45,7 @@ class UserProfile extends Component {
     const {id} = this.props.match.params
     e.preventDefault()
     AddFriend(id)
-    .then(() => console.log('friend added...'))
+    .then(() => {this.setState({ fireRedirect: true })})
   }
   
   isAuthenticated () {
@@ -53,6 +54,7 @@ class UserProfile extends Component {
   }
 
   render() {
+    const { fireRedirect } = this.state
     const isAlreadyAuthenticated = this.isAuthenticated()
     return (
       <div>
@@ -168,6 +170,7 @@ class UserProfile extends Component {
                 </Col>
               </Row>
             </Grid>
+            {fireRedirect && <Redirect to={'/home'} push />}
           </div>
         ) : <Redirect to={{pathname: '/login'}} />
         }
