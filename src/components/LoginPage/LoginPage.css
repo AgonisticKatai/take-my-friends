@@ -37,7 +37,7 @@ p {
 .linkToRegister {
   color: white;
 }
-a:hover {
+.linkToRegister:hover {
   color: #ddd;
   text-decoration: none;
 }

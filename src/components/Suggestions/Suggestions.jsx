@@ -48,7 +48,7 @@ class SuggestionsHome extends Component {
   }
 
   render () {
-    const { fireRedirect, id} = this.state
+    const { fireRedirect, id } = this.state
     return (
       <div className='suggestionsCarrusel'>
         {this.state.contacts.map((contact, index) => {

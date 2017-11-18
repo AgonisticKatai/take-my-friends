@@ -1,7 +1,15 @@
-.AsideContacts {
+/*.AsideContacts {
+  border: 2px solid #eaeaea;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+}*/
+
+.Aside-contacts-list {
   text-align: left;
-/*  border: 1px solid #ddd;
-  border-radius: 10px;*/
+  white-space: nowrap;
+  overflow: auto;
+  height: 400px;
   padding: 10px;
 }
 

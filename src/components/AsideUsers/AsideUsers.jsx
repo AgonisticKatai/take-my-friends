@@ -29,7 +29,7 @@ class AsideUsers extends Component {
     return (
       <div className='AsideUsers'>
         <h3>Categories (<span>{this.state.contacts.length}</span>)</h3>
-        <ul className='nav nav-pills nav-stacked'>
+        <ul className='Aside-users-list nav nav-pills nav-stacked'>
           {this.state.contacts.map((userData, index) => {
             return (
               <li key={index} role='presentation'><a href='#'>{userData.occupation}</a></li>

@@ -4,9 +4,9 @@ import {Switch, Route} from 'react-router-dom'
 import LoginPage from './LoginPage/LoginPage.jsx'
 import RegisterPage from './RegisterPage/RegisterPage.jsx'
 import Home from './Home/Home.jsx'
-import ContactSearch from './ContactSearch/ContactSearch.jsx'
 import MyAccount from './MyAccount/MyAccount.jsx'
 import UserProfile from './UserProfile/UserProfile.jsx'
+import SearchByOccupation from './SearchByOccupation/SearchByOccupation.jsx'
 
 const Main = () => {
   return (
@@ -17,6 +17,7 @@ const Main = () => {
         <Route path='/home' component={Home} />
         <Route path='/account' component={MyAccount} />
         <Route path='/profile/:id' component={UserProfile} />
+        <Route path='/find/:job' component={SearchByOccupation} />
       </Switch>
     </div>
   )

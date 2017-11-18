@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 
+import {Redirect} from 'react-router-dom'
+
+
 import {Form, FormGroup, ControlLabel, FormControl, HelpBlock, Button, InputGroup} from 'react-bootstrap'
 
 import './InputSearchForm.css'
@@ -8,21 +11,24 @@ class InputSearchForm extends Component {
   constructor () {
     super()
     this.state = {
-      occupationSearch: ''
+      fireRedirect: false,
+      job: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange (e) {
     this.setState({
-      occupationSearch: e.target.value
+      job: e.target.value
     })
   }
 
   handleSubmit (e) {
     e.preventDefault()
+    this.setState({ fireRedirect: true })
   }
   render () {
+    const { fireRedirect, job } = this.state
     return (
       <Form className='InputSearchForm-content' onSubmit={this.handleSubmit}>
         <h3>Do you need someone? a friend can help you!</h3>
@@ -44,6 +50,7 @@ class InputSearchForm extends Component {
             </InputGroup.Button>
           </InputGroup>
         </FormGroup>
+        {fireRedirect && job && <Redirect to={`/find/${job}`} push />}
       </Form>
     )
   }
