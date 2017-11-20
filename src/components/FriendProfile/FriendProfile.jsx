@@ -3,13 +3,13 @@ import {Redirect} from 'react-router-dom'
 import {Row, Grid, Image, InputGroup, Glyphicon, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
 
 import {GetUserById} from '../../services/GetUserById.js'
-import { SendMessage } from '../../services/SendMessage.js'
+import {SendMessage} from '../../services/SendMessage.js'
 
 import NavbarHeader from '../Navbar/Navbar.jsx'
 
 class FriendProfile extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
       message: '',
       fireRedirect: false,
@@ -21,6 +21,8 @@ class FriendProfile extends Component {
       friends: '',
       username: ''
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleMessage = this.handleMessage.bind(this)
   }
 
   componentWillMount() {
@@ -41,25 +43,17 @@ class FriendProfile extends Component {
     })
   }
 
-  handleChange = (e) => {
-    console.log(this.state)
-    console.log(e.target.value)
-    this.setState = {
-     message: 'hey'
-    }
+  handleChange (e) {
+    this.setState({
+     message: e.target.value
+    })
   }
 
-  handleMessage = (e) => {
-    e.preventDefault()
-    const { id } = this.props.match.params
-    const { message } = this.state
-
+  handleMessage (e) {
+    const {id} = this.props.match.params
+    const {message} = this.state
     SendMessage(id, message)
-    .then(() => {
-      console.log(this.state)
-      this.setState = ({ fireRedirect: true })
-      console.log(this.state)
-    })
+    .then(() => {this.setState({ fireRedirect: true })})
   }
   
   isAuthenticated () {
