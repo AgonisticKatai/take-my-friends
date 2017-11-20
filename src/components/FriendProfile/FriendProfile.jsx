@@ -3,16 +3,15 @@ import {Redirect} from 'react-router-dom'
 import {Row, Grid, Image, InputGroup, Glyphicon, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
 
 import {GetUserById} from '../../services/GetUserById.js'
-import {AddFriend} from '../../services/AddFriend.js'
+import { SendMessage } from '../../services/SendMessage.js'
 
 import NavbarHeader from '../Navbar/Navbar.jsx'
 
-import './UserProfile.css'
-
-class UserProfile extends Component {
-  constructor (props) {
-    super(props)
+class FriendProfile extends Component {
+  constructor () {
+    super()
     this.state = {
+      message: '',
       fireRedirect: false,
       name: '',
       lastname: '',
@@ -22,7 +21,6 @@ class UserProfile extends Component {
       friends: '',
       username: ''
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentWillMount() {
@@ -43,11 +41,25 @@ class UserProfile extends Component {
     })
   }
 
-  handleSubmit (e) {
-    const {id} = this.props.match.params
+  handleChange = (e) => {
+    console.log(this.state)
+    console.log(e.target.value)
+    this.setState = {
+     message: 'hey'
+    }
+  }
+
+  handleMessage = (e) => {
     e.preventDefault()
-    AddFriend(id)
-    .then(() => {this.setState({ fireRedirect: true })})
+    const { id } = this.props.match.params
+    const { message } = this.state
+
+    SendMessage(id, message)
+    .then(() => {
+      console.log(this.state)
+      this.setState = ({ fireRedirect: true })
+      console.log(this.state)
+    })
   }
   
   isAuthenticated () {
@@ -157,14 +169,20 @@ class UserProfile extends Component {
                         </InputGroup>
                       </FormGroup>
                     </Col>
+                    <Col sm={6} smOffset={6}>
+                      <FormGroup controlId="formControlsTextarea">
+                        <ControlLabel>Send a message to {this.state.name}, sure it can help you!!</ControlLabel>
+                        <FormControl componentClass="textarea" rows='5' onChange={this.handleChange} placeholder="enter your message here..." />
+                      </FormGroup>
+                    </Col>
                     <Col sm={3} smOffset={9}>
                       <FormGroup>
                         <Button
-                          type='submit'
+                          onClick={this.handleMessage}
                           bsStyle='primary'
                           bsSize='md'
                           block>
-                          Add to my friends
+                          Send message
                         </Button>
                       </FormGroup>
                     </Col>
@@ -181,4 +199,4 @@ class UserProfile extends Component {
   } 
 }
 
-export default UserProfile
+export default FriendProfile

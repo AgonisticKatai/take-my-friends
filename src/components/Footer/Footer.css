@@ -1,0 +1,14 @@
+.footer-container {
+  height: 30px;
+  background-color: #2c679b;
+  margin-top: 50px;
+}
+
+.footer-nav {
+  height: 50px;
+  background-color: #222;
+}
+
+.footer-container > p, .footer-nav > p {
+  color: white;
+}

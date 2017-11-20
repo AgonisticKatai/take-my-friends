@@ -14,6 +14,7 @@ class OccupationSearch extends Component {
     this.state = {
       fireRedirect: false,
       contacts : [{
+        id: '',
         name: '',
         lastname: '',
         email: '',
@@ -22,7 +23,6 @@ class OccupationSearch extends Component {
         username: ''
       }]
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentWillMount() {
@@ -45,11 +45,8 @@ class OccupationSearch extends Component {
     })
   }
 
-  handleSubmit (e) {
-    // const {job} = this.props.match.params
-    // e.preventDefault()
-    // AddFriend(id)
-    // .then(() => {this.setState({ fireRedirect: true })})
+  handleMessage (e) {
+    
   }
 
   render() {
@@ -147,7 +144,7 @@ class OccupationSearch extends Component {
                       <Col sm={3} smOffset={9}>
                         <FormGroup>
                           <Button
-                            type='submit'
+                            onclick={this.handleMessage}
                             bsStyle='primary'
                             bsSize='md'
                             block>

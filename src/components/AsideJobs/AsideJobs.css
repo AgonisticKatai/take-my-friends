@@ -4,21 +4,24 @@
   padding: 10px;
   margin-bottom: 20px;
 }*/
+.Aside {
+  margin-top: 10px;
+}
 
-.Aside-users-list {
+.Aside-jobs-list {
   text-align: left;
   white-space: nowrap;
   overflow: auto;
-  height: 400px;
+  max-height: 380px;
   padding: 10px;
 }
 
-.AsideUsers > h3 {
+.AsideJobs > h3 {
   padding-bottom: 15px;
   border-bottom: 3px solid #337ab7
 /*  padding-left: 15px;*/
 }
 
-.AsideUsers > h3 > span {
+.AsideJobs > h3 > span {
   color: #337ab7;
 }

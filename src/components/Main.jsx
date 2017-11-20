@@ -7,6 +7,7 @@ import Home from './Home/Home.jsx'
 import MyAccount from './MyAccount/MyAccount.jsx'
 import UserProfile from './UserProfile/UserProfile.jsx'
 import SearchByOccupation from './SearchByOccupation/SearchByOccupation.jsx'
+import FriendProfile from './FriendProfile/FriendProfile.jsx'
 
 const Main = () => {
   return (
@@ -17,6 +18,7 @@ const Main = () => {
         <Route path='/home' component={Home} />
         <Route path='/account' component={MyAccount} />
         <Route path='/profile/:id' component={UserProfile} />
+        <Route path='/friend_profile/:id' component={FriendProfile} />
         <Route path='/find/:job' component={SearchByOccupation} />
       </Switch>
     </div>

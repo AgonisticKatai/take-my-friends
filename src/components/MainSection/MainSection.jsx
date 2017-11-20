@@ -3,10 +3,10 @@ import React from 'react'
 import {Row, Grid, Col} from 'react-bootstrap'
 
 import Suggestions from '../Suggestions/Suggestions.jsx'
-import AsideUsers from '../AsideUsers/AsideUsers.jsx'
+import AsideJobs from '../AsideJobs/AsideJobs.jsx'
 import InputSearchForm from '../InputSearchForm/InputSearchForm.jsx'
 import Timeline from '../Timeline/Timeline.jsx'
-import AsideContacts from '../AsideContacts/AsideContacts.jsx'
+import AsideFriends from '../AsideFriends/AsideFriends.jsx'
 
 import './MainSection.css'
 
@@ -16,9 +16,9 @@ const MainSection = () => {
       <Grid>
       <Suggestions />
         <Row >
-          <Col xs={3} >
-            <AsideUsers />
-            <AsideContacts />
+          <Col xs={3} className='Aside'>
+            <AsideJobs />
+            <AsideFriends />
           </Col>
           <Col xs={7} >
             <InputSearchForm />

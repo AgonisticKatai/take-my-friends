@@ -5,6 +5,7 @@ import {Redirect} from 'react-router-dom'
 import {Grid, Row, Col, Thumbnail, Button} from 'react-bootstrap'
 
 import {getAllUsers} from '../../services/GetAllUsers.js'
+import { AddFriend } from '../../services/AddFriend.js'
 
 import './Suggestions.css'
 
@@ -19,11 +20,11 @@ class SuggestionsHome extends Component {
         name: '',
         lastname: '',
         profile_img: '',
-        occupation: '',
-        redirect: false
+        occupation: ''
       }]
     }
     this.handleProfile = this.handleProfile.bind(this)
+    this.handleFriend = this.handleFriend.bind(this)
   }
   componentWillMount () {
     getAllUsers()
@@ -47,6 +48,11 @@ class SuggestionsHome extends Component {
     this.setState({ fireRedirect: true, id: id })
   }
 
+  handleFriend (id) {
+    AddFriend(id)
+    .then(() => {this.setState({ fireRedirect: true })})
+  }
+
   render () {
     const { fireRedirect, id } = this.state
     return (
@@ -59,7 +65,7 @@ class SuggestionsHome extends Component {
               <p>{contact.occupation}</p>
               <p>
                 <Button type='submit' onClick={() => this.handleProfile(contact.id)} bsSize='sm' bsStyle='default' block>profile</Button>
-                <Button type='submit' onClick={() => this.handleProfile(contact.id)} bsSize='sm' bsStyle='primary' block>message</Button>
+                <Button type='submit' onClick={() => this.handleFriend(contact.id)} bsSize='sm' bsStyle='primary' block>add friend</Button>
               </p>
             </Thumbnail>
           )

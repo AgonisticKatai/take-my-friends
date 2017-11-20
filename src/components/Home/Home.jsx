@@ -3,6 +3,7 @@ import {Redirect} from 'react-router-dom'
 
 import NavbarHeader from '../Navbar/Navbar.jsx'
 import MainSection from '../MainSection/MainSection.jsx'
+import Footer from '../Footer/Footer.jsx'
 
 import {GetUserProfile} from '../../services/GetUserProfile.js'
 
@@ -53,6 +54,7 @@ class Home extends Component {
           <div>
             <NavbarHeader userProfile={this.state.profile}/>
             <MainSection />
+            <Footer />
           </div>
         ) : <Redirect to={{pathname: '/login'}} />
         }
