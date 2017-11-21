@@ -1,16 +1,9 @@
 import axios from 'axios'
 
-const token = localStorage.getItem('token')
+import { getAuthHeader } from 'services/AuthService.js'
 
-export function getFriends () {
+export async function getFriends () {
   const url = 'http://localhost:3005/friends'
-  return axios.get(url, 
-    {
-    headers : {
-      'Content-Type' : 'application/json',
-      'Accept' : 'application/json',
-      'Authorization' : `bearer ${token}`
-    }
-  })
-  .then(response => response.data.friends)
+  const { data: { friends } } = await axios.get(url, getAuthHeader())
+  return friends
 }

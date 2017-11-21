@@ -1,13 +1,13 @@
 import React from 'react'
-import {Switch, Route} from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
-import LoginPage from './LoginPage/LoginPage.jsx'
-import RegisterPage from './RegisterPage/RegisterPage.jsx'
-import Home from './Home/Home.jsx'
-import MyAccount from './MyAccount/MyAccount.jsx'
-import UserProfile from './UserProfile/UserProfile.jsx'
-import SearchByOccupation from './SearchByOccupation/SearchByOccupation.jsx'
-import FriendProfile from './FriendProfile/FriendProfile.jsx'
+import LoginPage from 'components/LoginPage/LoginPage.jsx'
+import RegisterPage from 'components/RegisterPage/RegisterPage.jsx'
+import Home from 'components/Home/Home.jsx'
+import MyAccount from 'components/MyAccount/MyAccount.jsx'
+import UserProfile from 'components/UserProfile/UserProfile.jsx'
+import SearchByOccupation from 'components/SearchByOccupation/SearchByOccupation.jsx'
+import FriendProfile from 'components/FriendProfile/FriendProfile.jsx'
 
 const Main = () => {
   return (

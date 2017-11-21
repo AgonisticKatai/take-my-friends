@@ -1,17 +1,9 @@
 import axios from 'axios'
 
-const token = localStorage.getItem('token')
+import { getAuthHeader } from 'services/AuthService.js'
 
-export function GetUserProfile () {
+export async function GetUserProfile () {
   const url = 'http://localhost:3005/user'
-  console.log('token api petition page...' + token)
-  return axios.get(url, 
-    {
-    headers : {
-      'Content-Type' : 'application/json',
-      'Accept' : 'application/json',
-      'Authorization' : `bearer ${token}`
-    }
-  })
-  .then(response => response.data)
+  const response = await axios.get(url, getAuthHeader())
+  return response.data
 }

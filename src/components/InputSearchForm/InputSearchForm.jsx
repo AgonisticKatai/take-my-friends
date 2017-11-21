@@ -1,9 +1,8 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
-
-import {Form, FormGroup, ControlLabel, FormControl, HelpBlock, Button, InputGroup} from 'react-bootstrap'
+import { Form, FormGroup, ControlLabel, FormControl, HelpBlock, Button, InputGroup } from 'react-bootstrap'
 
 import './InputSearchForm.css'
 
@@ -43,14 +42,14 @@ class InputSearchForm extends Component {
               onChange={this.handleChange}
               value={this.state.occupationSearch}
             />
-            <FormControl.Feedback/>
+            <FormControl.Feedback />
             <HelpBlock >example: Lawyer, Developer, Doctor...</HelpBlock>
             <InputGroup.Button className='ButtonSubmit'>
               <Button bsStyle='default' type='submit'>Find It!</Button>
             </InputGroup.Button>
           </InputGroup>
         </FormGroup>
-        {fireRedirect && job && <Redirect to={`/find/${job}`} push />}
+        { fireRedirect && job && <Redirect to={`/find/${job}`} push /> }
       </Form>
     )
   }

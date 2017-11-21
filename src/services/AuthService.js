@@ -1,11 +1,25 @@
 import axios from 'axios'
 
-function login( email, password ) {
+async function login (email, password) {
   const url = 'http://localhost:3005/login'
-  return axios.post(url, { username: email, password })
-    .then(response => response.data.token)
+  const response = await axios.post(url, { username: email, password })
+  return response.data.token
 }
 
-export default login
+async function register (email, password) {
+  const url = 'http://localhost:3005/register'
+  await axios.post(url, { email, password })
+}
 
-//export { login, isAuthenticated, .... }
+function getAuthHeader () {
+  const token = localStorage.getItem('token')
+  return ({
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `bearer ${token}`
+    }
+  })
+}
+
+export { login, register, getAuthHeader }

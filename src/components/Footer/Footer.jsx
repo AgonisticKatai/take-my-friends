@@ -2,15 +2,13 @@ import React from 'react'
 
 import './Footer.css'
 
-const Footer = () => {
+const Footer = () => {
   return (
     <div>
       <div className='footer-container'>
-
       </div>
       <div className='footer-nav'>
-
-      </div>      
+      </div>
     </div>
 
   )

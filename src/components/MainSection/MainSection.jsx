@@ -1,12 +1,11 @@
 import React from 'react'
+import { Row, Grid, Col } from 'react-bootstrap'
 
-import {Row, Grid, Col} from 'react-bootstrap'
-
-import Suggestions from '../Suggestions/Suggestions.jsx'
-import AsideJobs from '../AsideJobs/AsideJobs.jsx'
-import InputSearchForm from '../InputSearchForm/InputSearchForm.jsx'
-import Timeline from '../Timeline/Timeline.jsx'
-import AsideFriends from '../AsideFriends/AsideFriends.jsx'
+import Suggestions from 'components/Suggestions/Suggestions.jsx'
+import AsideJobs from 'components/AsideJobs/AsideJobs.jsx'
+import InputSearchForm from 'components/InputSearchForm/InputSearchForm.jsx'
+import Timeline from 'components/Timeline/Timeline.jsx'
+import AsideFriends from 'components/AsideFriends/AsideFriends.jsx'
 
 import './MainSection.css'
 
@@ -14,7 +13,7 @@ const MainSection = () => {
   return (
     <div>
       <Grid>
-      <Suggestions />
+        <Suggestions />
         <Row >
           <Col xs={3} className='Aside'>
             <AsideJobs />
@@ -28,7 +27,7 @@ const MainSection = () => {
           </Col>
         </Row>
       </Grid>
-    </div>   
+    </div>
   )
 }
 

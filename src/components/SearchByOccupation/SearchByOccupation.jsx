@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
-import {Redirect} from 'react-router-dom'
-import {Row, Well, Grid, Image, InputGroup, Glyphicon, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+import { Row, Well, Grid, Image, InputGroup, Glyphicon, ControlLabel, Form, Col, FormGroup, FormControl, Button } from 'react-bootstrap'
 
-import { GetUserByjob } from '../../services/GetUserByjob.js'
+import { GetUserByjob } from 'services/UserDataServices.js'
 
-import NavbarHeader from '../Navbar/Navbar.jsx'
+import NavbarHeader from 'components/Navbar/Navbar.jsx'
 
 import './SearchByOccupation.css'
 
@@ -13,7 +13,7 @@ class OccupationSearch extends Component {
     super(props)
     this.state = {
       fireRedirect: false,
-      contacts : [{
+      contacts: [{
         id: '',
         name: '',
         lastname: '',
@@ -25,8 +25,8 @@ class OccupationSearch extends Component {
     }
   }
 
-  componentWillMount() {
-    const {job} = this.props.match.params
+  componentWillMount () {
+    const { job } = this.props.match.params
     GetUserByjob(job)
     .then(data => {
       console.log(data)
@@ -46,27 +46,26 @@ class OccupationSearch extends Component {
   }
 
   handleMessage (e) {
-    
   }
 
-  render() {
+  render () {
     const { fireRedirect } = this.state
-    const {job: occupation} = this.props.match.params 
-    const anyContact = `Sorry, you don't have any contact with that works as ${occupation}` 
+    const { job: occupation } = this.props.match.params
+    const anyContact = `Sorry, you don't have any contact with that works as ${occupation}`
     const showCoincidences = `Hey! You have ${this.state.contacts.length} contacts who work as a ${occupation}`
     const showMessage = () => {
-      if(this.state.contacts[0]) {return showCoincidences}
+      if (this.state.contacts[0]) { return showCoincidences }
       return anyContact
     }
 
     return (
       <div className='contactsByJob'>
         <Grid>
-          <Well>{showMessage()}</Well>
-          {this.state.contacts.map((contact, index) => {
+          <Well>{ showMessage() }</Well>
+          { this.state.contacts.map((contact, index) => {
             return (
               <div>
-                <NavbarHeader ProfileImage={contact.profile_img}/>
+                <NavbarHeader ProfileImage={contact.profile_img} />
                 <Row>
                   <Col sm={12} className='form-my-account'>
                     <Form onSubmit={this.handleSubmit}>
@@ -78,7 +77,7 @@ class OccupationSearch extends Component {
                         <FormGroup>
                           <InputGroup>
                             <InputGroup.Addon>
-                              <Glyphicon glyph="user" />
+                              <Glyphicon glyph='user' />
                             </InputGroup.Addon>
                             <FormControl
                               type='text'
@@ -86,7 +85,7 @@ class OccupationSearch extends Component {
                               name='name'
                               value={contact.name}
                               disabled
-                            />                       
+                            />
                           </InputGroup>
                         </FormGroup>
                       </Col>
@@ -95,7 +94,7 @@ class OccupationSearch extends Component {
                         <FormGroup>
                           <InputGroup>
                             <InputGroup.Addon>
-                              <Glyphicon glyph="user" />
+                              <Glyphicon glyph='user' />
                             </InputGroup.Addon>
                             <FormControl
                               type='text'
@@ -112,7 +111,7 @@ class OccupationSearch extends Component {
                         <FormGroup>
                           <InputGroup>
                             <InputGroup.Addon>
-                              <Glyphicon glyph="envelope" />
+                              <Glyphicon glyph='envelope' />
                             </InputGroup.Addon>
                             <FormControl
                               type='email'
@@ -129,7 +128,7 @@ class OccupationSearch extends Component {
                         <FormGroup>
                           <InputGroup>
                             <InputGroup.Addon>
-                              <Glyphicon glyph="briefcase" />
+                              <Glyphicon glyph='briefcase' />
                             </InputGroup.Addon>
                             <FormControl
                               type='text'
@@ -154,15 +153,15 @@ class OccupationSearch extends Component {
                       </Col>
                     </Form>
                   </Col>
-                </Row>            
-                {fireRedirect && <Redirect to={'/home'} push />}
+                </Row>
+                { fireRedirect && <Redirect to={'/home'} push /> }
               </div>
             )
           })}
         </Grid>
       </div>
     )
-  } 
+  }
 }
 
 export default OccupationSearch

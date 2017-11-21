@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
-import {Redirect} from 'react-router-dom'
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
-import {getFriends} from '../../services/GetFriends.js'
+import { getFriends } from 'services/UserDataServices.js'
 
 import './AsideFriends.css'
 
@@ -44,20 +44,19 @@ class AsideFriends extends Component {
         <ul className='Aside-friends-list nav nav-pills nav-stacked' >
           {this.state.contacts.map((userData, index) => {
             return (
-              <li onClick={() => this.handleProfile(userData.id)} key={index} className='aside-li'>
+              <li onClick={() => this.handleProfile(userData.id)} key={ index } className='aside-li'>
                 <a>
-                  <img 
-                    className='friend-image' 
-                    src={userData.profile_img} 
-                    alt={ userData.name + ' ' + userData.lastname }
-                  /> 
-                  { userData.name + ' ' + userData.lastname }
-                  </a>
+                  <img
+                    className='friend-image'
+                    src={userData.profile_img}
+                    alt={userData.name + ' ' + userData.lastname}
+                  /> { userData.name + ' ' + userData.lastname }
+                </a>
               </li>
             )
           })}
         </ul>
-        {fireRedirect && id && <Redirect to={`/friend_profile/${id}`} push />}
+        { fireRedirect && id && <Redirect to={`/friend_profile/${id}`} push /> }
       </div>
     )
   }

@@ -1,17 +1,16 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { Navbar, NavItem, Image, NavDropdown, MenuItem, Nav } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
-import {Navbar, NavItem, Image, NavDropdown, MenuItem, Nav} from 'react-bootstrap'
-import {LinkContainer} from 'react-router-bootstrap'
-
-import {GetUserProfile} from '../../services/GetUserProfile.js'
-import {removeToken} from '../../services/StorageService.js'
+import { GetUserProfile } from 'services/UserDataServices.js'
+import { removeToken } from 'services/StorageService.js'
 
 import './Navbar.css'
 
 class NavbarHeader extends Component {
   constructor (props) {
     super(props)
-    this.state = {
+    this.state = {
       profile_img: '',
       name: '',
       lastname: '',
@@ -26,7 +25,7 @@ class NavbarHeader extends Component {
       this.setState({
         profile_img: user.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
         name: user.name,
-        lastname: user.lastname,
+        lastname: user.lastname
       })
     })
   }
@@ -55,17 +54,17 @@ class NavbarHeader extends Component {
               <MenuItem divider />
               <MenuItem eventKey={3.4}>Activity</MenuItem>
             </NavDropdown>
-          </Nav>          
+          </Nav>
           <Nav pullRight>
             <LinkContainer to='/account'>
               <NavItem eventKey={4}>My account</NavItem>
-            </LinkContainer>  
+            </LinkContainer>
             <LinkContainer to='/login'>
               <NavItem eventKey={5} onClick={this.logOut}>Logout</NavItem>
-            </LinkContainer>          
-            <NavItem>{this.state.name && this.state.lastname ? `Logged as ${this.state.name} ${this.state.lastname}` : ''}</NavItem>
+            </LinkContainer>
+            <NavItem>{ this.state.name && this.state.lastname ? `Logged as ${this.state.name} ${this.state.lastname}` : '' }</NavItem>
             <LinkContainer to='/account'>
-              <Image src={this.state.profile_img} className='navbar-profile-image' /> 
+              <Image src={this.state.profile_img} className='navbar-profile-image' />
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>

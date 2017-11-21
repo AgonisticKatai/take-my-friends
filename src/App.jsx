@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
-import {BrowserRouter} from 'react-router-dom'
+import React, { Component } from 'react'
+import { BrowserRouter } from 'react-router-dom'
 
-import Main from './components/Main.jsx'
+import Main from 'components/Main.jsx'
 
 class App extends Component {
   render () {

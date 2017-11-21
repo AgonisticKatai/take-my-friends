@@ -1,11 +1,10 @@
-import React, {Component} from 'react'
-import {Redirect} from 'react-router-dom'
-import {Row, Grid, Image, InputGroup, Glyphicon, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+import { Row, Grid, Image, InputGroup, Glyphicon, ControlLabel, Form, Col, FormGroup, FormControl, Button } from 'react-bootstrap'
 
-import {GetUserById} from '../../services/GetUserById.js'
-import {AddFriend} from '../../services/AddFriend.js'
+import { GetUserById, AddFriend } from 'services/UserDataServices.js'
 
-import NavbarHeader from '../Navbar/Navbar.jsx'
+import NavbarHeader from 'components/Navbar/Navbar.jsx'
 
 import './UserProfile.css'
 
@@ -25,8 +24,8 @@ class UserProfile extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentWillMount() {
-    const {id} = this.props.match.params
+  componentWillMount () {
+    const { id } = this.props.match.params
     GetUserById(id)
     .then(user => {
       this.setState({
@@ -44,25 +43,25 @@ class UserProfile extends Component {
   }
 
   handleSubmit (e) {
-    const {id} = this.props.match.params
+    const { id } = this.props.match.params
     e.preventDefault()
     AddFriend(id)
-    .then(() => {this.setState({ fireRedirect: true })})
+    .then(() => { this.setState({ fireRedirect: true }) })
   }
-  
-  isAuthenticated () {
+
+  isAuthenticated () {
     const token = localStorage.getItem('token')
     return token
   }
 
-  render() {
+  render () {
     const { fireRedirect } = this.state
     const isAlreadyAuthenticated = this.isAuthenticated()
     return (
       <div>
-        {isAlreadyAuthenticated ?  (
+        { isAlreadyAuthenticated ? (
           <div>
-            <NavbarHeader ProfileImage={this.state.profile_img}/>
+            <NavbarHeader ProfileImage={this.state.profile_img} />
             <Grid>
               <Row>
                 <Col sm={12} className='form-my-account'>
@@ -78,7 +77,7 @@ class UserProfile extends Component {
                       <FormGroup>
                         <InputGroup>
                           <InputGroup.Addon>
-                            <Glyphicon glyph="user" />
+                            <Glyphicon glyph='user' />
                           </InputGroup.Addon>
                           <FormControl
                             type='text'
@@ -86,7 +85,7 @@ class UserProfile extends Component {
                             name='name'
                             value={this.state.name}
                             disabled
-                          />                       
+                          />
                         </InputGroup>
                       </FormGroup>
                     </Col>
@@ -95,7 +94,7 @@ class UserProfile extends Component {
                       <FormGroup>
                         <InputGroup>
                           <InputGroup.Addon>
-                            <Glyphicon glyph="user" />
+                            <Glyphicon glyph='user' />
                           </InputGroup.Addon>
                           <FormControl
                             type='text'
@@ -112,7 +111,7 @@ class UserProfile extends Component {
                       <FormGroup>
                         <InputGroup>
                           <InputGroup.Addon>
-                            <Glyphicon glyph="envelope" />
+                            <Glyphicon glyph='envelope' />
                           </InputGroup.Addon>
                           <FormControl
                             type='email'
@@ -129,7 +128,7 @@ class UserProfile extends Component {
                       <FormGroup>
                         <InputGroup>
                           <InputGroup.Addon>
-                            <Glyphicon glyph="briefcase" />
+                            <Glyphicon glyph='briefcase' />
                           </InputGroup.Addon>
                           <FormControl
                             type='text'
@@ -146,7 +145,7 @@ class UserProfile extends Component {
                       <FormGroup>
                         <InputGroup>
                           <InputGroup.Addon>
-                            <Glyphicon glyph="picture" />
+                            <Glyphicon glyph='picture' />
                           </InputGroup.Addon>
                           <FormControl
                             type='text'
@@ -172,13 +171,13 @@ class UserProfile extends Component {
                 </Col>
               </Row>
             </Grid>
-            {fireRedirect && <Redirect to={'/home'} push />}
+            { fireRedirect && <Redirect to={'/home'} push /> }
           </div>
-        ) : <Redirect to={{pathname: '/login'}} />
+        ) : <Redirect to={{ pathname: '/login' }} />
         }
       </div>
     )
-  } 
+  }
 }
 
 export default UserProfile

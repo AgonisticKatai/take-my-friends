@@ -1,31 +1,31 @@
-import React, {Component} from 'react'
-import {Redirect} from 'react-router-dom'
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
-import NavbarHeader from '../Navbar/Navbar.jsx'
-import MainSection from '../MainSection/MainSection.jsx'
-import Footer from '../Footer/Footer.jsx'
+import NavbarHeader from 'components/Navbar/Navbar.jsx'
+import MainSection from 'components/MainSection/MainSection.jsx'
+import Footer from 'components/Footer/Footer.jsx'
 
-import {GetUserProfile} from '../../services/GetUserProfile.js'
+import { GetUserProfile } from 'services/UserDataServices.js'
 
 class Home extends Component {
   constructor () {
     super()
     this.state = {
       profile: {
-        _id:'',
-        username:'',
+        _id: '',
+        username: '',
         name: '',
         lastname: '',
-        email:'',
+        email: '',
         profile_img: '',
-        occupation:'',
+        occupation: '',
         country: '',
         friends: []
-      }      
+      }
     }
   }
-  
-  componentDidMount() {
+
+  componentDidMount () {
     GetUserProfile()
     .then(user => {
       this.setState({
@@ -41,18 +41,18 @@ class Home extends Component {
       })
     })
   }
-  isAuthenticated () {
+  isAuthenticated () {
     const token = localStorage.getItem('token')
     return token
   }
 
-  render() {
+  render () {
     const isAlreadyAuthenticated = this.isAuthenticated()
     return (
       <div>
-        {isAlreadyAuthenticated ?  (
+        { isAlreadyAuthenticated ? (
           <div>
-            <NavbarHeader userProfile={this.state.profile}/>
+            <NavbarHeader userProfile={this.state.profile} />
             <MainSection />
             <Footer />
           </div>
@@ -60,10 +60,7 @@ class Home extends Component {
         }
       </div>
     )
-  } 
+  }
 }
 
 export default Home
-
-
-

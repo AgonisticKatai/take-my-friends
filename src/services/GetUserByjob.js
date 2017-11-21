@@ -1,16 +1,9 @@
 import axios from 'axios'
 
-const token = localStorage.getItem('token')
+import { getAuthHeader } from 'services/AuthService.js'
 
-export function GetUserByjob (job) {
+export async function GetUserByjob (job) {
   const url = `http://localhost:3005/friends/${job}`
-  return axios.get(url, 
-    {
-    headers : {
-      'Content-Type' : 'application/json',
-      'Accept' : 'application/json',
-      'Authorization' : `bearer ${token}`
-    }
-  })
-  .then(response => response.data)
+  const response = await axios.get(url, getAuthHeader())
+  return response.data
 }

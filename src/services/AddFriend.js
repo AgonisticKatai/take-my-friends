@@ -1,16 +1,9 @@
 import axios from 'axios'
 
-const token = localStorage.getItem('token')
+import { getAuthHeader } from 'services/AuthService.js'
 
-export function AddFriend (_id) {
+export async function AddFriend (_id) {
   const url = `http://localhost:3005/user/${_id}`
-  return axios.put(url, {},
-    {
-    headers: {
-      'Content-Type' : 'application/json',
-      'Accept' : 'application/json',
-      'Authorization' : `bearer ${token}`
-    }
-  })
-  .then(response => response.data)
+  const response = await axios.put(url, {}, getAuthHeader())
+  return response.data
 }

@@ -1,11 +1,8 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+import { Thumbnail, Button } from 'react-bootstrap'
 
-import {Redirect} from 'react-router-dom'
-
-import {Thumbnail, Button} from 'react-bootstrap'
-
-import {getAllUsers} from '../../services/GetAllUsers.js'
-import { AddFriend } from '../../services/AddFriend.js'
+import { getAllUsers, AddFriend } from 'services/UserDataServices.js'
 
 import './Suggestions.css'
 
@@ -43,26 +40,26 @@ class SuggestionsHome extends Component {
       })
     })
   }
-  
+
   handleProfile (id) {
     this.setState({ fireRedirect: true, id: id })
   }
 
   handleFriend (id) {
     AddFriend(id)
-    .then(() => {this.setState({ fireRedirect: true })})
+    .then(() => { this.setState({ fireRedirect: true }) })
   }
 
   render () {
     const { fireRedirect, id } = this.state
     return (
       <div className='suggestionsCarrusel'>
-        {this.state.contacts.map((contact, index) => {
+        { this.state.contacts.map((contact, index) => {
           return (
             <Thumbnail className='thumbnail-suggestion' src={contact.profile_img} alt={contact.name}>
-              <h3>{contact.name}</h3>
-              <h3>{contact.lastname}</h3>
-              <p>{contact.occupation}</p>
+              <h3>{ contact.name }</h3>
+              <h3>{ contact.lastname }</h3>
+              <p>{ contact.occupation }</p>
               <p>
                 <Button type='submit' onClick={() => this.handleProfile(contact.id)} bsSize='sm' bsStyle='default' block>profile</Button>
                 <Button type='submit' onClick={() => this.handleFriend(contact.id)} bsSize='sm' bsStyle='primary' block>add friend</Button>
@@ -70,7 +67,7 @@ class SuggestionsHome extends Component {
             </Thumbnail>
           )
         })}
-        {fireRedirect && id && <Redirect to={`/profile/${id}`} push />}
+        { fireRedirect && id && <Redirect to={`/profile/${id}`} push /> }
       </div>
     )
   }

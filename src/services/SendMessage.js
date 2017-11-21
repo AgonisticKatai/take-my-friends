@@ -1,15 +1,9 @@
 import axios from 'axios'
 
-const token = localStorage.getItem('token')
+import { getAuthHeader } from 'services/AuthService.js'
 
-export function SendMessage (id, message) {
+export async function SendMessage (id, message) {
   const url = `http://localhost:3005/message/${id}`
-  return axios.put(url, { message },
-    {
-    headers : {
-      'Content-Type' : 'application/json',
-      'Accept' : 'application/json',
-      'Authorization' : `bearer ${token}`
-    }
-  })
+  const response = await axios.put(url, { message }, getAuthHeader())
+  return response.data
 }

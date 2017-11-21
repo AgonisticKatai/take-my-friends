@@ -1,16 +1,9 @@
 import axios from 'axios'
 
-const token = localStorage.getItem('token')
+import { getAuthHeader } from 'services/AuthService.js'
 
-export function getMessages () {
+export async function getMessages () {
   const url = 'http://localhost:3005/messages'
-  return axios.get(url, 
-    {
-    headers : {
-      'Content-Type' : 'application/json',
-      'Accept' : 'application/json',
-      'Authorization' : `bearer ${token}`
-    }
-  })
-  .then(response => response.data.conversations)
+  const { data: { conversations } } = await axios.get(url, getAuthHeader())
+  return conversations
 }

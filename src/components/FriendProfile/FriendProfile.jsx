@@ -1,11 +1,10 @@
-import React, {Component} from 'react'
-import {Redirect} from 'react-router-dom'
-import {Row, Grid, Image, InputGroup, Glyphicon, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+import { Row, Grid, Image, InputGroup, Glyphicon, ControlLabel, Form, Col, FormGroup, FormControl, Button } from 'react-bootstrap'
 
-import {GetUserById} from '../../services/GetUserById.js'
-import {SendMessage} from '../../services/SendMessage.js'
+import { GetUserById, SendMessage } from 'services/UserDataServices.js'
 
-import NavbarHeader from '../Navbar/Navbar.jsx'
+import NavbarHeader from 'components/Navbar/Navbar.jsx'
 
 class FriendProfile extends Component {
   constructor (props) {
@@ -25,8 +24,8 @@ class FriendProfile extends Component {
     this.handleMessage = this.handleMessage.bind(this)
   }
 
-  componentWillMount() {
-    const {id} = this.props.match.params
+  componentWillMount () {
+    const { id } = this.props.match.params
     GetUserById(id)
     .then(user => {
       this.setState({
@@ -45,30 +44,30 @@ class FriendProfile extends Component {
 
   handleChange (e) {
     this.setState({
-     message: e.target.value
+      message: e.target.value
     })
   }
 
   handleMessage (e) {
-    const {id} = this.props.match.params
+    const { id } = this.props.match.params
     const {message} = this.state
     SendMessage(id, message)
-    .then(() => {this.setState({ fireRedirect: true })})
+    .then(() => { this.setState({ fireRedirect: true }) })
   }
-  
-  isAuthenticated () {
+
+  isAuthenticated () {
     const token = localStorage.getItem('token')
     return token
   }
 
-  render() {
+  render () {
     const { fireRedirect } = this.state
     const isAlreadyAuthenticated = this.isAuthenticated()
     return (
       <div>
-        {isAlreadyAuthenticated ?  (
+        { isAlreadyAuthenticated ? (
           <div>
-            <NavbarHeader ProfileImage={this.state.profile_img}/>
+            <NavbarHeader ProfileImage={this.state.profile_img} />
             <Grid>
               <Row>
                 <Col sm={12} className='form-my-account'>
@@ -84,7 +83,7 @@ class FriendProfile extends Component {
                       <FormGroup>
                         <InputGroup>
                           <InputGroup.Addon>
-                            <Glyphicon glyph="user" />
+                            <Glyphicon glyph='user' />
                           </InputGroup.Addon>
                           <FormControl
                             type='text'
@@ -92,7 +91,7 @@ class FriendProfile extends Component {
                             name='name'
                             value={this.state.name}
                             disabled
-                          />                       
+                          />
                         </InputGroup>
                       </FormGroup>
                     </Col>
@@ -101,7 +100,7 @@ class FriendProfile extends Component {
                       <FormGroup>
                         <InputGroup>
                           <InputGroup.Addon>
-                            <Glyphicon glyph="user" />
+                            <Glyphicon glyph='user' />
                           </InputGroup.Addon>
                           <FormControl
                             type='text'
@@ -118,7 +117,7 @@ class FriendProfile extends Component {
                       <FormGroup>
                         <InputGroup>
                           <InputGroup.Addon>
-                            <Glyphicon glyph="envelope" />
+                            <Glyphicon glyph='envelope' />
                           </InputGroup.Addon>
                           <FormControl
                             type='email'
@@ -135,7 +134,7 @@ class FriendProfile extends Component {
                       <FormGroup>
                         <InputGroup>
                           <InputGroup.Addon>
-                            <Glyphicon glyph="briefcase" />
+                            <Glyphicon glyph='briefcase' />
                           </InputGroup.Addon>
                           <FormControl
                             type='text'
@@ -152,7 +151,7 @@ class FriendProfile extends Component {
                       <FormGroup>
                         <InputGroup>
                           <InputGroup.Addon>
-                            <Glyphicon glyph="picture" />
+                            <Glyphicon glyph='picture' />
                           </InputGroup.Addon>
                           <FormControl
                             type='text'
@@ -164,9 +163,9 @@ class FriendProfile extends Component {
                       </FormGroup>
                     </Col>
                     <Col sm={6} smOffset={6}>
-                      <FormGroup controlId="formControlsTextarea">
+                      <FormGroup controlId='formControlsTextarea'>
                         <ControlLabel>Send a message to {this.state.name}, sure it can help you!!</ControlLabel>
-                        <FormControl componentClass="textarea" rows='5' onChange={this.handleChange} placeholder="enter your message here..." />
+                        <FormControl componentClass='textarea' rows='5' onChange={this.handleChange} placeholder='enter your message here...' />
                       </FormGroup>
                     </Col>
                     <Col sm={3} smOffset={9}>
@@ -184,13 +183,13 @@ class FriendProfile extends Component {
                 </Col>
               </Row>
             </Grid>
-            {fireRedirect && <Redirect to={'/home'} push />}
+            { fireRedirect && <Redirect to={'/home'} push /> }
           </div>
-        ) : <Redirect to={{pathname: '/login'}} />
+        ) : <Redirect to={{ pathname: '/login' }} />
         }
       </div>
     )
-  } 
+  }
 }
 
 export default FriendProfile

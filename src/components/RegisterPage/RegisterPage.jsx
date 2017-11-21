@@ -1,10 +1,9 @@
-import React, {Component} from 'react'
-import {Redirect} from 'react-router-dom'
-import {Row, Jumbotron, Grid, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+import { Row, Jumbotron, Grid, ControlLabel, Form, Col, FormGroup, FormControl, Button } from 'react-bootstrap'
 
-import {saveToken} from '../../services/StorageService.js'
-import register from '../../services/RegisterService.js'
-import login from '../../services/AuthService.js'
+import { saveToken } from 'services/StorageService.js'
+import { login, register } from 'services/AuthService.js'
 
 import './RegisterPage.css'
 
@@ -24,16 +23,12 @@ class RegisterPage extends Component {
     })
   }
 
-  handleSubmit (e) {
+  async handleSubmit (e) {
     e.preventDefault()
-    register(this.state.email, this.state.password)
-    .then(response => {
-      login(this.state.email, this.state.password)
-      .then( token => {
-        saveToken(token)
-        this.setState({ fireRedirect: true })
-      })
-    })
+    await register(this.state.email, this.state.password)
+    const token = await login(this.state.email, this.state.password)
+    saveToken(token)
+    this.setState({ fireRedirect: true })
   }
 
   render () {
@@ -88,7 +83,7 @@ class RegisterPage extends Component {
             </Col>
           </Row>
         </Grid>
-        {fireRedirect && <Redirect to={'/account'} push />}
+        { fireRedirect && <Redirect to={'/account'} push /> }
       </div>
     )
   }

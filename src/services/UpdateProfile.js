@@ -1,15 +1,9 @@
 import axios from 'axios'
 
-const token = localStorage.getItem('token')
+import { getAuthHeader } from 'services/AuthService.js'
 
-export function UpdateProfile (name, lastname, email, profile_img, occupation) {
+export async function UpdateProfile (name, lastname, email, profile_img, occupation) {
   const url = 'http://localhost:3005/account'
-  return axios.put(url, {name, lastname, email, profile_img, occupation},
-    {
-    headers : {
-      'Content-Type' : 'application/json',
-      'Accept' : 'application/json',
-      'Authorization' : `bearer ${token}`
-    }
-  })
+  const response = await axios.put(url, { name, lastname, email, profile_img, occupation }, getAuthHeader())
+  return response.data
 }

@@ -1,12 +1,12 @@
-function saveToken(token) {
+function saveToken (token) {
   return localStorage.setItem('token', token)
 }
 
-function getToken(token) {
+function getToken (token) {
   return localStorage.getItem('token')
 }
 
-function removeToken(token) {
+function removeToken (token) {
   return localStorage.removeItem('token')
 }
 

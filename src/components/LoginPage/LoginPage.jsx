@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
-import {Redirect} from 'react-router-dom'
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+import { Row, Jumbotron, Grid, ControlLabel, Form, Col, FormGroup, FormControl, Button } from 'react-bootstrap'
 import toastr from 'toastr'
-import {Row, Jumbotron, Grid, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
 
-import { saveToken } from '../../services/StorageService.js'
-import login from '../../services/AuthService.js'
+import { saveToken } from 'services/StorageService.js'
+import { login } from 'services/AuthService.js'
 
 import './LoginPage.css'
 
@@ -29,7 +29,7 @@ class LoginPage extends Component {
   handleSubmit (e) {
     e.preventDefault()
     login(this.state.email, this.state.password)
-      .then( token => {
+      .then(token => {
         saveToken(token)
         this.setState({token: true})
         toastr.success('Login succesfull!!')
@@ -41,7 +41,7 @@ class LoginPage extends Component {
     const isAlreadyAuthenticated = this.state.token
     return (
       <div>
-        {isAlreadyAuthenticated ? <Redirect to={{pathname: '/home'}} /> : (
+        { isAlreadyAuthenticated ? <Redirect to={{ pathname: '/home' }} /> : (
           <div className='content-login'>
             <Grid>
               <Row>
@@ -94,7 +94,7 @@ class LoginPage extends Component {
                 </Col>
               </Row>
             </Grid>
-          </div>        
+          </div>
         )}
       </div>
     )
