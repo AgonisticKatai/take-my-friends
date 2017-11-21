@@ -20,6 +20,7 @@ class AsideJobs extends Component {
     .then(data => {
       this.setState({
         jobs: data.map(contact => {
+          console.log(contact)
           return contact.occupation && contact.occupation || 'not defined'
         })
       })
@@ -40,6 +41,7 @@ class AsideJobs extends Component {
         <h3>Categories (<span>{jobsContainer.length}</span>)</h3>
         <ul className='Aside-jobs-list nav nav-pills nav-stacked'>
           {jobsContainer.map((job, index) => {
+            console.log('map => ', job)
             return (
               <li key={index} onClick={() => this.setState({ job: job, fireRedirect: true })} role='presentation'><a>{job}</a></li>
             )
