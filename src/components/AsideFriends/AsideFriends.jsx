@@ -24,10 +24,10 @@ class AsideFriends extends Component {
       this.setState({
         contacts: data.map(contact => {
           return ({
-            id: contact._id && contact._id || '',
-            name: contact.name && contact.name || '',
-            lastname: contact.lastname && contact.lastname || 'not defined',
-            profile_img: contact.profile_img && contact.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png'
+            id: contact._id || '',
+            name: contact.name || '',
+            lastname: contact.lastname || 'not defined',
+            profile_img: contact.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png'
           })
         })
       })
@@ -45,7 +45,14 @@ class AsideFriends extends Component {
           {this.state.contacts.map((userData, index) => {
             return (
               <li onClick={() => this.handleProfile(userData.id)} key={index} className='aside-li'>
-                <a><img className='friend-image' src={userData.profile_img} /> {userData.name + ' ' + userData.lastname}</a>
+                <a>
+                  <img 
+                    className='friend-image' 
+                    src={userData.profile_img} 
+                    alt={ userData.name + ' ' + userData.lastname }
+                  /> 
+                  { userData.name + ' ' + userData.lastname }
+                  </a>
               </li>
             )
           })}

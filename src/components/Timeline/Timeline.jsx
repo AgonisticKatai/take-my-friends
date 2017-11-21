@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 
-import {Media} from 'react-bootstrap'
+import Moment from 'react-moment'
+
+import {Media, Button} from 'react-bootstrap'
 
 import {getMessages} from '../../services/GetMessages.js'
 
@@ -18,7 +20,7 @@ class Timeline extends Component {
           profile_img: '',
           id: '',
           message: '',
-          createAt: ''
+          createdAt: ''
         }]
       }]
     }
@@ -34,12 +36,12 @@ class Timeline extends Component {
             _id: conversation._id,
             messages: conversation.messages.map(message => {
               return ({
-                id: message.author._id && message.author._id || '',
-                name: message.author.name && message.author.name || '',
-                lastname: message.author.lastname && message.author.lastname || '',
-                profile_img: message.author.profile_img && message.author.profile_img || '',              
-                message: message.body && message.body || '',
-                createAt: message.createAt && message.createAt || ''
+                id: message.author._id || '',
+                name: message.author.name || '',
+                lastname: message.author.lastname || '',
+                profile_img: message.author.profile_img || '',              
+                message: message.body || '',
+                createdAt: message.createdAt || ''
               })
             })
           })
@@ -51,7 +53,7 @@ class Timeline extends Component {
   render () {
     return (
       <div className='Timeline-content'>
-        <h3>Your conversations (<span>6</span>)</h3>
+        <h3>Your conversations (<span>{this.state.conversations.length}</span>)</h3>
         <div className='timeline-messages'>
           {this.state.conversations.map(conversation => {
             return (
@@ -64,7 +66,9 @@ class Timeline extends Component {
                     </Media.Left>
                     <Media.Body className='timeline-body'>
                       <Media.Heading>{message.name} {message.lastname}</Media.Heading>
-                      <p>{message.message}</p>
+                      <p>{message.message}</p>                  
+                      <p className='date'>message received <Moment fromNow date={message.createdAt}></Moment></p>
+                      <Button bsSize='xs'>Response this message from {message.name}</Button>
                     </Media.Body>
                   </Media>
                 )

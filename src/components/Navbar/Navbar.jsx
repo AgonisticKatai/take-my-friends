@@ -24,7 +24,7 @@ class NavbarHeader extends Component {
     GetUserProfile()
     .then(user => {
       this.setState({
-        profile_img: user.profile_img && user.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
+        profile_img: user.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
         name: user.name,
         lastname: user.lastname,
       })

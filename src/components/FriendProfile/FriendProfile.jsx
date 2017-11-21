@@ -30,14 +30,14 @@ class FriendProfile extends Component {
     GetUserById(id)
     .then(user => {
       this.setState({
-        id: user._id && user._id || '',
-        name: user.name && user.name || '',
-        lastname: user.lastname && user.lastname || '',
-        email: user.email && user.email || '',
-        profile_img: user.profile_img && user.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-        occupation: user.occupation && user.occupation || '',
-        country: user.country && user.country || '',
-        friends: user.friends && user.friends || '',
+        id: user._id || '',
+        name: user.name || '',
+        lastname: user.lastname || '',
+        email: user.email || '',
+        profile_img: user.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
+        occupation: user.occupation || '',
+        country: user.country || '',
+        friends: user.friends || '',
         username: user.username
       })
     })

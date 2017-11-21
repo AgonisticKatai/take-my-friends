@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
-import {Row, Well, Thumbnail, Grid, Image, InputGroup, Glyphicon, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
+import {Row, Well, Grid, Image, InputGroup, Glyphicon, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
 
-import {GetUserByjob} from '../../services/GetUserByjob.js'
+import { GetUserByjob } from '../../services/GetUserByjob.js'
 
 import NavbarHeader from '../Navbar/Navbar.jsx'
 
@@ -33,11 +33,11 @@ class OccupationSearch extends Component {
       this.setState({
         contacts: data.map(function (contact) {
           return ({
-            id: contact._id && contact._id || '',
-            name: contact.name && contact.name || '',
-            lastname: contact.lastname && contact.lastname || '',
-            profile_img: contact.profile_img && contact.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-            occupation: contact.occupation && contact.occupation || '',
+            id: contact._id || '',
+            name: contact.name || '',
+            lastname: contact.lastname || '',
+            profile_img: contact.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
+            occupation: contact.occupation || '',
             username: contact.username
           })
         })
@@ -50,7 +50,7 @@ class OccupationSearch extends Component {
   }
 
   render() {
-    const { fireRedirect, id } = this.state
+    const { fireRedirect } = this.state
     const {job: occupation} = this.props.match.params 
     const anyContact = `Sorry, you don't have any contact with that works as ${occupation}` 
     const showCoincidences = `Hey! You have ${this.state.contacts.length} contacts who work as a ${occupation}`

@@ -12,6 +12,7 @@
   text-align: left;
   white-space: nowrap;
   overflow: auto;
+  min-height: 200px;
   max-height: 380px;
   padding: 10px;
 }

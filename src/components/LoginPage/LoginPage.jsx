@@ -3,7 +3,7 @@ import {Redirect} from 'react-router-dom'
 import toastr from 'toastr'
 import {Row, Jumbotron, Grid, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
 
-import { saveToken, getToken, removeToken } from '../../services/StorageService.js'
+import { saveToken } from '../../services/StorageService.js'
 import login from '../../services/AuthService.js'
 
 import './LoginPage.css'

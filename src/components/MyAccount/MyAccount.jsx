@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import {Row, Grid, Image, InputGroup, Glyphicon, ControlLabel, Form, Col, FormGroup, FormControl, Button} from 'react-bootstrap'
 
-import {GetUserProfile} from '../../services/GetUserProfile.js'
-import {UpdateProfile} from '../../services/UpdateProfile.js'
+import { GetUserProfile } from '../../services/GetUserProfile.js'
+import { UpdateProfile } from '../../services/UpdateProfile.js'
 
 import NavbarHeader from '../Navbar/Navbar.jsx'
 
@@ -28,13 +28,13 @@ class MyAccount extends Component {
     GetUserProfile()
     .then(user => {
       this.setState({
-        id: user._id && user._id || '',
-        name: user.name && user.name || '',
-        lastname: user.lastname && user.lastname || '',
-        email: user.email && user.email || '',
-        profile_img: user.profile_img && user.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-        occupation: user.occupation && user.occupation || '',
-        country: user.country && user.country || ''
+        id: user._id || '',
+        name: user.name || '',
+        lastname: user.lastname || '',
+        email: user.email || '',
+        profile_img: user.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
+        occupation: user.occupation || '',
+        country: user.country || ''
       })
     })
   }

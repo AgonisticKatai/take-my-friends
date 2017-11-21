@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 import {Redirect} from 'react-router-dom'
 
-import {Grid, Row, Col, Thumbnail, Button} from 'react-bootstrap'
+import {Thumbnail, Button} from 'react-bootstrap'
 
 import {getAllUsers} from '../../services/GetAllUsers.js'
 import { AddFriend } from '../../services/AddFriend.js'
@@ -33,11 +33,11 @@ class SuggestionsHome extends Component {
       this.setState({
         contacts: data.map(function (contact) {
           return ({
-            id: contact._id && contact._id || '',
-            name: contact.name && contact.name || '',
-            lastname: contact.lastname && contact.lastname || '',
-            profile_img: contact.profile_img && contact.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-            occupation: contact.occupation && contact.occupation || ''
+            id: contact._id || '',
+            name: contact.name || '',
+            lastname: contact.lastname || '',
+            profile_img: contact.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
+            occupation: contact.occupation || ''
           })
         })
       })

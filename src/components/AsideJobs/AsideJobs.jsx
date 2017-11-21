@@ -21,7 +21,7 @@ class AsideJobs extends Component {
       this.setState({
         jobs: data.map(contact => {
           console.log(contact)
-          return contact.occupation && contact.occupation || 'not defined'
+          return contact.occupation || 'not defined'
         })
       })
     })
