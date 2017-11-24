@@ -56,12 +56,6 @@ const GetUserByjob = async (job) => {
   return response.data
 }
 
-const RemoveMessageById = async (id) => {
-  const url = `http://localhost:3005/message/${id}`
-  const response = await axios.delete(url, getAuthHeader())
-  return response.data
-}
-
 const GetFriendsJobs = async () => {
   const url = `http://localhost:3005/friends_jobs`
   const response = await axios.get(url, getAuthHeader())
@@ -74,4 +68,16 @@ const GetOutBoxMessages = async () => {
   return outbox
 }
 
-export { AddFriend, getAllUsers, getFriends, GetInBoxMessages, GetUserById, GetUserProfile, SendMessage, UpdateProfile, GetUserByjob, RemoveMessageById, GetFriendsJobs, GetOutBoxMessages }
+const RemoveInboxMessageById = async (id) => {
+  const url = `http://localhost:3005/message_inbox/${id}`
+  const response = await axios.delete(url, getAuthHeader())
+  return response.data
+}
+
+const RemoveOutboxMessageById = async (id) => {
+  const url = `http://localhost:3005/message_outbox/${id}`
+  const response = await axios.delete(url, getAuthHeader())
+  return response.data
+}
+
+export { AddFriend, getAllUsers, getFriends, GetInBoxMessages, GetUserById, GetUserProfile, SendMessage, UpdateProfile, GetUserByjob, GetFriendsJobs, GetOutBoxMessages, RemoveInboxMessageById, RemoveOutboxMessageById }

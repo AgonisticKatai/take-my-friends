@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Media, Button, Tabs, Tab } from 'react-bootstrap'
 import Moment from 'react-moment'
 
-import { GetOutBoxMessages, RemoveMessageById } from 'services/UserDataServices.js'
+import { GetOutBoxMessages, RemoveOutboxMessageById } from 'services/UserDataServices.js'
 
 class OutBoxMessages extends Component {
   constructor (props) {
@@ -48,7 +48,7 @@ class OutBoxMessages extends Component {
   }
 
   removeConversation = async (id) => {
-    await RemoveMessageById(id)
+    await RemoveOutboxMessageById(id)
   }
 
   render () {

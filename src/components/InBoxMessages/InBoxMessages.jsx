@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Media, Button, Tabs, Tab } from 'react-bootstrap'
 import Moment from 'react-moment'
 
-import { GetInBoxMessages, RemoveMessageById } from 'services/UserDataServices.js'
+import { GetInBoxMessages, RemoveInboxMessageById } from 'services/UserDataServices.js'
 
 class InBoxMessages extends Component {
   constructor (props) {
@@ -23,6 +23,14 @@ class InBoxMessages extends Component {
   }
 
   componentWillMount = async () => {
+    await this.getInboxMessages()
+  }
+
+  componentWillUpdate = async () => {
+    await this.getInboxMessages()
+  }
+
+  getInboxMessages = async () => {
     const inBoxMessages = await GetInBoxMessages()
     this.setState({
       inbox: inBoxMessages.map(inBox => {
@@ -48,7 +56,8 @@ class InBoxMessages extends Component {
   }
 
   removeConversation = async (id) => {
-    await RemoveMessageById(id)
+    await RemoveInboxMessageById(id)
+    // this.setState({ removed: true })
   }
 
   render () {
