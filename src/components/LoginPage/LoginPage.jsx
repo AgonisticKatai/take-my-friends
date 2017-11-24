@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Row, Jumbotron, Grid, ControlLabel, Form, Col, FormGroup, FormControl, Button } from 'react-bootstrap'
-import toastr from 'toastr'
 
 import { saveToken } from 'services/StorageService.js'
 import { login } from 'services/AuthService.js'
@@ -28,12 +27,12 @@ class LoginPage extends Component {
     e.preventDefault()
     console.log('handleSubmit...')
     const token = await login(this.state.email, this.state.password)
-    // toastr.success('Login succesfull!!')
     saveToken(token)
     this.setState({token: true})
   }
 
   render () {
+    const { token } = this.state
     return (
       <div className='content-login'>
         <Grid>
@@ -85,6 +84,7 @@ class LoginPage extends Component {
             </Col>
           </Row>
         </Grid>
+        { token && <Redirect to={`/home`} push /> }
       </div>
     )
   }
