@@ -26,7 +26,7 @@ class AsideFriends extends Component {
         return ({
           id: contact._id || '',
           name: contact.name || '',
-          lastname: contact.lastname || 'not defined',
+          lastname: contact.lastname || 'Anonymous',
           profileImg: contact.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png'
         })
       })

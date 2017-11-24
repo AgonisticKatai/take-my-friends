@@ -19,7 +19,7 @@ class AsideJobs extends Component {
     const data = await GetFriendsJobs()
     this.setState({
       jobs: data.map(contact => {
-        return contact || 'not defined'
+        return contact || 'Jobless'
       })
     })
   }
