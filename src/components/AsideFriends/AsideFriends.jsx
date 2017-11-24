@@ -14,28 +14,29 @@ class AsideFriends extends Component {
       contacts: [{
         name: '',
         lastname: '',
-        profile_img: ''
+        profileImg: ''
       }]
     }
   }
-  componentWillMount () {
-    getFriends()
-    .then(data => {
-      this.setState({
-        contacts: data.map(contact => {
-          return ({
-            id: contact._id || '',
-            name: contact.name || '',
-            lastname: contact.lastname || 'not defined',
-            profile_img: contact.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png'
-          })
+
+  componentWillMount = async () => {
+    const data = await getFriends()
+    this.setState({
+      contacts: data.map(contact => {
+        return ({
+          id: contact._id || '',
+          name: contact.name || '',
+          lastname: contact.lastname || 'not defined',
+          profileImg: contact.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png'
         })
       })
     })
   }
-  handleProfile (id) {
+
+  handleProfile = id => {
     this.setState({ fireRedirect: true, id: id })
   }
+
   render () {
     const { fireRedirect, id } = this.state
     return (
@@ -44,11 +45,11 @@ class AsideFriends extends Component {
         <ul className='Aside-friends-list nav nav-pills nav-stacked' >
           {this.state.contacts.map((userData, index) => {
             return (
-              <li onClick={() => this.handleProfile(userData.id)} key={ index } className='aside-li'>
+              <li onClick={() => this.handleProfile(userData.id)} key={index} className='aside-li'>
                 <a>
                   <img
                     className='friend-image'
-                    src={userData.profile_img}
+                    src={userData.profileImg}
                     alt={userData.name + ' ' + userData.lastname}
                   /> { userData.name + ' ' + userData.lastname }
                 </a>

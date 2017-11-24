@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
+import PrivateRoute from 'components/PrivateRoute/PrivateRoute.jsx'
 import LoginPage from 'components/LoginPage/LoginPage.jsx'
 import RegisterPage from 'components/RegisterPage/RegisterPage.jsx'
 import Home from 'components/Home/Home.jsx'
@@ -15,11 +16,11 @@ const Main = () => {
       <Switch>
         <Route path='/login' component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
-        <Route path='/home' component={Home} />
-        <Route path='/account' component={MyAccount} />
-        <Route path='/profile/:id' component={UserProfile} />
-        <Route path='/friend_profile/:id' component={FriendProfile} />
-        <Route path='/find/:job' component={SearchByOccupation} />
+        <PrivateRoute path='/home' component={Home} />
+        <PrivateRoute path='/account' component={MyAccount} />
+        <PrivateRoute path='/profile/:id' component={UserProfile} />
+        <PrivateRoute path='/friend_profile/:id' component={FriendProfile} />
+        <PrivateRoute path='/find/:job' component={SearchByOccupation} />
       </Switch>
     </div>
   )

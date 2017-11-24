@@ -1,9 +1,9 @@
-/*.AsideUsers {
-  border: 2px solid #eaeaea;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 20px;
-}*/
+@media(max-width: 480px) {
+  .Aside {
+  display: none;
+  }
+}
+
 .Aside {
   margin-top: 10px;
 }
@@ -25,4 +25,8 @@
 
 .AsideJobs > h3 > span {
   color: #337ab7;
+}
+
+.Aside-jobs-list {
+  cursor: pointer;
 }

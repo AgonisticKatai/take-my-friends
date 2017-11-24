@@ -1,12 +1,12 @@
-function saveToken (token) {
+const saveToken = token => {
   return localStorage.setItem('token', token)
 }
 
-function getToken (token) {
+const getToken = token => {
   return localStorage.getItem('token')
 }
 
-function removeToken (token) {
+const removeToken = token => {
   return localStorage.removeItem('token')
 }
 

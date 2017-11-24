@@ -18,34 +18,28 @@ class OccupationSearch extends Component {
         name: '',
         lastname: '',
         email: '',
-        profile_img: '',
+        profileImg: '',
         occupation: '',
         username: ''
       }]
     }
   }
 
-  componentWillMount () {
+  componentWillMount = async () => {
     const { job } = this.props.match.params
-    GetUserByjob(job)
-    .then(data => {
-      console.log(data)
-      this.setState({
-        contacts: data.map(function (contact) {
-          return ({
-            id: contact._id || '',
-            name: contact.name || '',
-            lastname: contact.lastname || '',
-            profile_img: contact.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-            occupation: contact.occupation || '',
-            username: contact.username
-          })
+    const data = await GetUserByjob(job)
+    this.setState({
+      contacts: data.map(function (contact) {
+        return ({
+          id: contact._id || '',
+          name: contact.name || '',
+          lastname: contact.lastname || '',
+          profileImg: contact.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png',
+          occupation: contact.occupation || '',
+          username: contact.username || ''
         })
       })
     })
-  }
-
-  handleMessage (e) {
   }
 
   render () {
@@ -64,13 +58,13 @@ class OccupationSearch extends Component {
           <Well>{ showMessage() }</Well>
           { this.state.contacts.map((contact, index) => {
             return (
-              <div>
-                <NavbarHeader ProfileImage={contact.profile_img} />
+              <div key={index} >
+                <NavbarHeader ProfileImage={contact.profileImg} />
                 <Row>
                   <Col sm={12} className='form-my-account'>
                     <Form onSubmit={this.handleSubmit}>
                       <Col sm={2}>
-                        <Image src={contact.profile_img} className='profile-image' rounded />
+                        <Image src={contact.profileImg} className='profile-image' rounded />
                       </Col>
                       <Col sm={3}>
                         <ControlLabel>Name</ControlLabel>
@@ -123,7 +117,7 @@ class OccupationSearch extends Component {
                           </InputGroup>
                         </FormGroup>
                       </Col>
-                      <Col sm={4}s>
+                      <Col sm={4}>
                         <ControlLabel>Occupation</ControlLabel>
                         <FormGroup>
                           <InputGroup>
@@ -143,9 +137,8 @@ class OccupationSearch extends Component {
                       <Col sm={3} smOffset={9}>
                         <FormGroup>
                           <Button
-                            onclick={this.handleMessage}
+                            onClick={this.handleMessage}
                             bsStyle='primary'
-                            bsSize='md'
                             block>
                             Send a message
                           </Button>

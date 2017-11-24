@@ -1,9 +1,32 @@
-/*.AsideContacts {
-  border: 2px solid #eaeaea;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 20px;
-}*/
+@media(max-width: 480px) {
+  .Aside {
+    display: none;
+  }
+}
+
+.AsideFriends > h3{
+  padding-bottom: 15px;
+  border-bottom: 3px solid #337ab7
+/*  padding-right: 15px;*/
+}
+
+.AsideFriends > h3 > span {
+  color: #337ab7;
+}
+
+.Aside-friends-list {
+  list-style: none;
+  cursor: pointer;
+}
+
+.friend-image {
+  width: 40px;
+  height: 40px;
+}
+
+.friend-image:hover {
+  background-color: blue;
+}
 
 .Aside-friends-list {
   text-align: left;
@@ -26,6 +49,7 @@
 
 .Aside-friends-list {
   list-style: none;
+  cursor: pointer;
 }
 
 .friend-image {

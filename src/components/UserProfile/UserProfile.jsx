@@ -16,165 +16,134 @@ class UserProfile extends Component {
       name: '',
       lastname: '',
       email: '',
-      profile_img: '',
+      profileImg: '',
       occupation: '',
       friends: '',
       username: ''
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentWillMount () {
+  componentWillMount = async () => {
     const { id } = this.props.match.params
-    GetUserById(id)
-    .then(user => {
-      this.setState({
-        id: user._id || '',
-        name: user.name || '',
-        lastname: user.lastname || '',
-        email: user.email || '',
-        profile_img: user.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-        occupation: user.occupation || '',
-        country: user.country || '',
-        friends: user.friends || '',
-        username: user.username
-      })
+    const user = await GetUserById(id)
+    this.setState({
+      id: user._id || '',
+      name: user.name || '',
+      lastname: user.lastname || '',
+      email: user.email || '',
+      profileImg: user.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png',
+      occupation: user.occupation || '',
+      country: user.country || '',
+      friends: user.friends || '',
+      username: user.username
     })
   }
 
-  handleSubmit (e) {
+  handleSubmit = async (e) => {
     const { id } = this.props.match.params
     e.preventDefault()
-    AddFriend(id)
-    .then(() => { this.setState({ fireRedirect: true }) })
-  }
-
-  isAuthenticated () {
-    const token = localStorage.getItem('token')
-    return token
+    await AddFriend(id)
+    this.setState({ fireRedirect: true })
   }
 
   render () {
     const { fireRedirect } = this.state
-    const isAlreadyAuthenticated = this.isAuthenticated()
     return (
       <div>
-        { isAlreadyAuthenticated ? (
-          <div>
-            <NavbarHeader ProfileImage={this.state.profile_img} />
-            <Grid>
-              <Row>
-                <Col sm={12} className='form-my-account'>
-                  <Form onSubmit={this.handleSubmit}>
-                    <h3>User profile</h3>
-                    <h4>please, keep your data updated for a better user experience</h4>
-                    <h6>In this section you can modify your user and contact information. It is important that the field of work is specified clearly and concisely so that other users can find you when they need your services.</h6>
-                    <Col sm={2}>
-                      <Image src={this.state.profile_img} className='profile-image' rounded />
-                    </Col>
-                    <Col sm={3}>
-                      <ControlLabel>Name</ControlLabel>
-                      <FormGroup>
-                        <InputGroup>
-                          <InputGroup.Addon>
-                            <Glyphicon glyph='user' />
-                          </InputGroup.Addon>
-                          <FormControl
-                            type='text'
-                            placeholder='Enter name'
-                            name='name'
-                            value={this.state.name}
-                            disabled
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                    </Col>
-                    <Col sm={3}>
-                      <ControlLabel>Lastname</ControlLabel>
-                      <FormGroup>
-                        <InputGroup>
-                          <InputGroup.Addon>
-                            <Glyphicon glyph='user' />
-                          </InputGroup.Addon>
-                          <FormControl
-                            type='text'
-                            placeholder='Enter lastname'
-                            name='lastname'
-                            value={this.state.lastname}
-                            disabled
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                    </Col>
-                    <Col sm={4}>
-                      <ControlLabel>Email</ControlLabel>
-                      <FormGroup>
-                        <InputGroup>
-                          <InputGroup.Addon>
-                            <Glyphicon glyph='envelope' />
-                          </InputGroup.Addon>
-                          <FormControl
-                            type='email'
-                            placeholder='Enter email'
-                            name='email'
-                            value={this.state.username}
-                            disabled
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                    </Col>
-                    <Col sm={4}s>
-                      <ControlLabel>Occupation</ControlLabel>
-                      <FormGroup>
-                        <InputGroup>
-                          <InputGroup.Addon>
-                            <Glyphicon glyph='briefcase' />
-                          </InputGroup.Addon>
-                          <FormControl
-                            type='text'
-                            placeholder='Enter occupation'
-                            name='occupation'
-                            value={this.state.occupation}
-                            disabled
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                    </Col>
-                    <Col sm={6}>
-                      <ControlLabel>Profile image (URL)</ControlLabel>
-                      <FormGroup>
-                        <InputGroup>
-                          <InputGroup.Addon>
-                            <Glyphicon glyph='picture' />
-                          </InputGroup.Addon>
-                          <FormControl
-                            type='text'
-                            name='profile_img'
-                            value={this.state.profile_img}
-                            disabled
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                    </Col>
-                    <Col sm={3} smOffset={9}>
-                      <FormGroup>
-                        <Button
-                          type='submit'
-                          bsStyle='primary'
-                          bsSize='md'
-                          block>
-                          Add to my friends
-                        </Button>
-                      </FormGroup>
-                    </Col>
-                  </Form>
+        <NavbarHeader ProfileImage={this.state.profileImg} />
+        <Grid>
+          <Row>
+            <Col sm={12} className='form-my-account'>
+              <Form onSubmit={this.handleSubmit}>
+                <h3>User profile</h3>
+                <h4>please, keep your data updated for a better user experience</h4>
+                <h6>In this section you can modify your user and contact information. It is important that the field of work is specified clearly and concisely so that other users can find you when they need your services.</h6>
+                <Col sm={2}>
+                  <Image src={this.state.profileImg} className='profile-image' rounded />
                 </Col>
-              </Row>
-            </Grid>
-            { fireRedirect && <Redirect to={'/home'} push /> }
-          </div>
-        ) : <Redirect to={{ pathname: '/login' }} />
-        }
+                <Col sm={3}>
+                  <ControlLabel>Name</ControlLabel>
+                  <FormGroup>
+                    <InputGroup>
+                      <InputGroup.Addon>
+                        <Glyphicon glyph='user' />
+                      </InputGroup.Addon>
+                      <FormControl
+                        type='text'
+                        placeholder='Enter name'
+                        name='name'
+                        value={this.state.name}
+                        disabled
+                      />
+                    </InputGroup>
+                  </FormGroup>
+                </Col>
+                <Col sm={3}>
+                  <ControlLabel>Lastname</ControlLabel>
+                  <FormGroup>
+                    <InputGroup>
+                      <InputGroup.Addon>
+                        <Glyphicon glyph='user' />
+                      </InputGroup.Addon>
+                      <FormControl
+                        type='text'
+                        placeholder='Enter lastname'
+                        name='lastname'
+                        value={this.state.lastname}
+                        disabled
+                      />
+                    </InputGroup>
+                  </FormGroup>
+                </Col>
+                <Col sm={4}>
+                  <ControlLabel>Email</ControlLabel>
+                  <FormGroup>
+                    <InputGroup>
+                      <InputGroup.Addon>
+                        <Glyphicon glyph='envelope' />
+                      </InputGroup.Addon>
+                      <FormControl
+                        type='email'
+                        placeholder='Enter email'
+                        name='email'
+                        value={this.state.username}
+                        disabled
+                      />
+                    </InputGroup>
+                  </FormGroup>
+                </Col>
+                <Col sm={4}>
+                  <ControlLabel>Occupation</ControlLabel>
+                  <FormGroup>
+                    <InputGroup>
+                      <InputGroup.Addon>
+                        <Glyphicon glyph='briefcase' />
+                      </InputGroup.Addon>
+                      <FormControl
+                        type='text'
+                        placeholder='Enter occupation'
+                        name='occupation'
+                        value={this.state.occupation}
+                        disabled
+                      />
+                    </InputGroup>
+                  </FormGroup>
+                </Col>
+                <Col sm={3} smOffset={9}>
+                  <FormGroup>
+                    <Button
+                      type='submit'
+                      bsStyle='primary'
+                      block>
+                      Add to my friends
+                    </Button>
+                  </FormGroup>
+                </Col>
+              </Form>
+            </Col>
+          </Row>
+        </Grid>
+        { fireRedirect && <Redirect to={'/home'} push /> }
       </div>
     )
   }

@@ -11,26 +11,23 @@ class NavbarHeader extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      profile_img: '',
+      profileImg: '',
       name: '',
       lastname: '',
       token: true
     }
-    this.logOut = this.logOut.bind(this)
   }
 
-  componentWillMount () {
-    GetUserProfile()
-    .then(user => {
-      this.setState({
-        profile_img: user.profile_img || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-        name: user.name,
-        lastname: user.lastname
-      })
+  componentWillMount = async () => {
+    const user = await GetUserProfile()
+    this.setState({
+      profileImg: user.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png',
+      name: user.name,
+      lastname: user.lastname
     })
   }
 
-  logOut () {
+  logOut = () => {
     removeToken()
   }
 
@@ -63,9 +60,11 @@ class NavbarHeader extends Component {
               <NavItem eventKey={5} onClick={this.logOut}>Logout</NavItem>
             </LinkContainer>
             <NavItem>{ this.state.name && this.state.lastname ? `Logged as ${this.state.name} ${this.state.lastname}` : '' }</NavItem>
-            <LinkContainer to='/account'>
-              <Image src={this.state.profile_img} className='navbar-profile-image' />
-            </LinkContainer>
+            <Navbar.Brand>
+              <LinkContainer to='/account' >
+                <Image src={this.state.profileImg} className='navbar-profile-image' />
+              </LinkContainer>
+            </Navbar.Brand>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

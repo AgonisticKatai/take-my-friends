@@ -10,7 +10,6 @@ const Footer = () => {
       <div className='footer-nav'>
       </div>
     </div>
-
   )
 }
 

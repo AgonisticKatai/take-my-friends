@@ -13,17 +13,15 @@ class RegisterPage extends Component {
     this.state = {
       fireRedirect: false
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange (e) {
+  handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
 
-  async handleSubmit (e) {
+  handleSubmit = async (e) => {
     e.preventDefault()
     await register(this.state.email, this.state.password)
     const token = await login(this.state.email, this.state.password)
@@ -41,7 +39,7 @@ class RegisterPage extends Component {
               <Jumbotron className='register-form'>
                 <h2>User registration</h2>
                 <Form onSubmit={this.handleSubmit}>
-                  <Grid>                  
+                  <Grid>
                     <Col sm={12}>
                       <ControlLabel>Enter your email for create an account</ControlLabel>
                       <FormGroup controlId='formHorizontalEmail'>

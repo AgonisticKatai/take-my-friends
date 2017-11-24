@@ -13,16 +13,18 @@ const MainSection = () => {
   return (
     <div>
       <Grid>
-        <Suggestions />
         <Row >
-          <Col xs={3} className='Aside'>
+          <Col xs={12} sm={12} md={8} mdOffset={2} >
+            <InputSearchForm />
+          </Col>
+        </Row>
+        <Suggestions />
+        <Row>
+          <Col xs={12} md={3}className='Aside'>
             <AsideJobs />
             <AsideFriends />
           </Col>
-          <Col xs={7} >
-            <InputSearchForm />
-          </Col>
-          <Col xs={9} >
+          <Col xs={12} md={9}>
             <Timeline />
           </Col>
         </Row>

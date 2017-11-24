@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import { getFriends } from 'services/UserDataServices.js'
+import { GetFriendsJobs } from 'services/UserDataServices.js'
 
 import './AsideJobs.css'
 
@@ -15,33 +15,22 @@ class AsideJobs extends Component {
     }
   }
 
-  componentWillMount () {
-    getFriends()
-    .then(data => {
-      this.setState({
-        jobs: data.map(contact => {
-          console.log(contact)
-          return contact.occupation || 'not defined'
-        })
+  componentWillMount = async () => {
+    const data = await GetFriendsJobs()
+    this.setState({
+      jobs: data.map(contact => {
+        return contact || 'not defined'
       })
     })
   }
 
   render () {
     const { fireRedirect, job } = this.state
-    const jobsContainer = this.state.jobs.reduce((acc, job) => {
-      if (!acc.includes(job)) {
-        acc.push(job)
-      }
-      return acc
-    }, [])
-
     return (
       <div className='AsideJobs'>
-        <h3>Categories (<span>{ jobsContainer.length }</span>)</h3>
+        <h3>Categories (<span>{ this.state.jobs.length }</span>)</h3>
         <ul className='Aside-jobs-list nav nav-pills nav-stacked'>
-          { jobsContainer.map((job, index) => {
-            console.log('map => ', job)
+          { this.state.jobs.map((job, index) => {
             return (
               <li key={index} onClick={() => this.setState({ job: job, fireRedirect: true })} role='presentation'><a>{ job }</a></li>
             )
