@@ -12,6 +12,7 @@ class OccupationSearch extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      id: '',
       fireRedirect: false,
       contacts: [{
         id: '',
@@ -42,8 +43,15 @@ class OccupationSearch extends Component {
     })
   }
 
+  handleMessage = (id) => {
+    this.setState({
+      id: id,
+      fireRedirect: true
+    })
+  }
+
   render () {
-    const { fireRedirect } = this.state
+    const { fireRedirect, id } = this.state
     const { job: occupation } = this.props.match.params
     const anyContact = `Sorry, you don't have any contact with that works as ${occupation}`
     const showCoincidences = `Hey! You have ${this.state.contacts.length} contacts who work as a ${occupation}`
@@ -62,7 +70,7 @@ class OccupationSearch extends Component {
                 <NavbarHeader ProfileImage={contact.profileImg} />
                 <Row>
                   <Col sm={12} className='form-my-account'>
-                    <Form onSubmit={this.handleSubmit}>
+                    <Form>
                       <Col sm={2}>
                         <Image src={contact.profileImg} className='profile-image' rounded />
                       </Col>
@@ -137,7 +145,7 @@ class OccupationSearch extends Component {
                       <Col sm={3} smOffset={9}>
                         <FormGroup>
                           <Button
-                            onClick={this.handleMessage}
+                            onClick={() => {this.handleMessage(contact.id)}}
                             bsStyle='primary'
                             block>
                             Send a message
@@ -147,7 +155,7 @@ class OccupationSearch extends Component {
                     </Form>
                   </Col>
                 </Row>
-                { fireRedirect && <Redirect to={'/home'} push /> }
+                { fireRedirect && id && <Redirect to={`/friend_profile/${ id }`} push /> }
               </div>
             )
           })}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Tabs, Tab } from 'react-bootstrap'
 
-import InBoxMessages from 'components/InBoxMessages/InBoxMessages.jsx'
-import OutBoxMessages from 'components/OutBoxMessages/OutBoxMessages.jsx'
+import InboxMessages from 'components/InboxMessages/InboxMessages.jsx'
+import OutboxMessages from 'components/OutboxMessages/OutboxMessages.jsx'
 
 import './Timeline.css'
 
@@ -29,10 +29,10 @@ class Timeline extends Component {
       <div className='Timeline-content'>
         <Tabs activeKey={this.state.key} onSelect={this.handleSelect} id='controlled-tab-example'>
           <Tab eventKey={1} title='Inbox messages'>
-            <InBoxMessages />
+            <InboxMessages />
           </Tab>
           <Tab eventKey={2} title='Outbox messages'>
-            <OutBoxMessages />
+            <OutboxMessages />
           </Tab>
         </Tabs>
       </div>

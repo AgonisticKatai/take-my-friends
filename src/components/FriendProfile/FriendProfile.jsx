@@ -46,7 +46,7 @@ class FriendProfile extends Component {
 
   handleMessage = async (e) => {
     const { id } = this.props.match.params
-    const {message} = this.state
+    const { message } = this.state
     await SendMessage(id, message)
     this.setState({ fireRedirect: true })
   }

@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { Media, Button, Tabs, Tab } from 'react-bootstrap'
 import Moment from 'react-moment'
 
-import { GetOutBoxMessages, RemoveOutboxMessageById } from 'services/UserDataServices.js'
+import { GetOutboxMessages, RemoveOutboxMessageById } from 'services/UserDataServices.js'
 
-class OutBoxMessages extends Component {
+class OutboxMessages extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      removed: false,
       outbox: [{
         _id: '',
         messages: [{
@@ -22,13 +23,24 @@ class OutBoxMessages extends Component {
     }
   }
 
-  componentWillMount = async () => {
-    const outBoxMessages = await GetOutBoxMessages()
+  componentDidMount = async () => {
+    await this.getOutboxMessages()
+  }
+
+  componentDidUpdate = async () => {
+    if (this.state.removed) {
+      await this.getOutboxMessages()
+    }
+  }
+
+  getOutboxMessages = async () => {
+    const outboxMessages = await GetOutboxMessages()
     this.setState({
-      outbox: outBoxMessages.map(outBox => {
+      removed: false,
+      outbox: outboxMessages.map(outbox => {
         return ({
-          _id: outBox._id,
-          messages: outBox.messages.map(message => {
+          _id: outbox._id,
+          messages: outbox.messages.map(message => {
             return ({
               id: message.adresseer._id || '',
               name: message.adresseer.name || '',
@@ -43,12 +55,9 @@ class OutBoxMessages extends Component {
     })
   }
 
-  responseMessage = id => {
-    
-  }
-
   removeConversation = async (id) => {
     await RemoveOutboxMessageById(id)
+  this.setState({ removed: true })
   }
 
   render () {
@@ -81,4 +90,4 @@ class OutBoxMessages extends Component {
   }
 }
 
-export default OutBoxMessages
+export default OutboxMessages

@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { Media, Button, Tabs, Tab } from 'react-bootstrap'
 import Moment from 'react-moment'
 
-import { GetInBoxMessages, RemoveInboxMessageById } from 'services/UserDataServices.js'
+import { GetInboxMessages, RemoveInboxMessageById } from 'services/UserDataServices.js'
 
-class InBoxMessages extends Component {
+class InboxMessages extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      removed: false,
       inbox: [{
         _id: '',
         messages: [{
@@ -22,21 +23,24 @@ class InBoxMessages extends Component {
     }
   }
 
-  componentWillMount = async () => {
+  componentDidMount = async () => {
     await this.getInboxMessages()
   }
 
-  componentWillUpdate = async () => {
-    await this.getInboxMessages()
+  componentDidUpdate = async () => {
+    if (this.state.removed) {
+      await this.getInboxMessages()
+    }
   }
 
   getInboxMessages = async () => {
-    const inBoxMessages = await GetInBoxMessages()
+    const inboxMessages = await GetInboxMessages()
     this.setState({
-      inbox: inBoxMessages.map(inBox => {
+      removed: false,
+      inbox: inboxMessages.map(inbox => {
         return ({
-          _id: inBox._id,
-          messages: inBox.messages.map(message => {
+          _id: inbox._id,
+          messages: inbox.messages.map(message => {
             return ({
               id: message.author._id || '',
               name: message.author.name || '',
@@ -51,13 +55,13 @@ class InBoxMessages extends Component {
     })
   }
 
-  responseMessage = id => {
-    
-  }
-
   removeConversation = async (id) => {
     await RemoveInboxMessageById(id)
-    // this.setState({ removed: true })
+  this.setState({ removed: true })
+  }
+
+  responseMessage = id => {
+    
   }
 
   render () {
@@ -90,4 +94,4 @@ class InBoxMessages extends Component {
   }
 }
 
-export default InBoxMessages
+export default InboxMessages

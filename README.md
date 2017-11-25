@@ -1,6 +1,6 @@
 Bugs control: 
 
-Solve problem with remove outbox messages.
+
 Solve problem with re-render when add friends at thumbnail-suggestions.
 Solve problem with no showing navbar when no coincidences search.
 Solve problem with showing messages in ascending order.

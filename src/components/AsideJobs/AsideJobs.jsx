@@ -32,9 +32,14 @@ class AsideJobs extends Component {
         <ul className='Aside-jobs-list nav nav-pills nav-stacked'>
           { this.state.jobs.map((job, index) => {
             return (
-              <li key={index} onClick={() => this.setState({ job: job, fireRedirect: true })} role='presentation'><a>{ job }</a></li>
+              <li 
+                key={index}
+                onClick={() => this.setState({ job: job, fireRedirect: true })}
+                role='presentation'>
+                <a>{ job }</a>
+              </li>
             )
-          }) }
+          })}
         </ul>
         { fireRedirect && <Redirect to={`/find/${job}`} push /> }
       </div>

@@ -20,12 +20,6 @@ const getFriends = async () => {
   return friends
 }
 
-const GetInBoxMessages = async () => {
-  const url = 'http://localhost:3005/messages'
-  const { data: { conversations } } = await axios.get(url, getAuthHeader())
-  return conversations
-}
-
 const GetUserById = async (id) => {
   const url = `http://localhost:3005/user/${id}`
   const response = await axios.get(url, getAuthHeader())
@@ -35,12 +29,6 @@ const GetUserById = async (id) => {
 const GetUserProfile = async () => {
   const url = 'http://localhost:3005/user'
   const response = await axios.get(url, getAuthHeader())
-  return response.data
-}
-
-const SendMessage = async (id, message) => {
-  const url = `http://localhost:3005/message/${id}`
-  const response = await axios.put(url, { message }, getAuthHeader())
   return response.data
 }
 
@@ -62,7 +50,19 @@ const GetFriendsJobs = async () => {
   return response.data
 }
 
-const GetOutBoxMessages = async () => {
+const SendMessage = async (id, message) => {
+  const url = `http://localhost:3005/message/${id}`
+  const response = await axios.put(url, { message }, getAuthHeader())
+  return response.data
+}
+
+const GetInboxMessages = async () => {
+  const url = 'http://localhost:3005/messages_inbox'
+  const { data: { inbox } } = await axios.get(url, getAuthHeader())
+  return inbox
+}
+
+const GetOutboxMessages = async () => {
   const url = 'http://localhost:3005/messages_outbox'
   const { data: { outbox } } = await axios.get(url, getAuthHeader())
   return outbox
@@ -80,4 +80,4 @@ const RemoveOutboxMessageById = async (id) => {
   return response.data
 }
 
-export { AddFriend, getAllUsers, getFriends, GetInBoxMessages, GetUserById, GetUserProfile, SendMessage, UpdateProfile, GetUserByjob, GetFriendsJobs, GetOutBoxMessages, RemoveInboxMessageById, RemoveOutboxMessageById }
+export { AddFriend, getAllUsers, getFriends, GetInboxMessages, GetUserById, GetUserProfile, SendMessage, UpdateProfile, GetUserByjob, GetFriendsJobs, GetOutboxMessages, RemoveInboxMessageById, RemoveOutboxMessageById }
