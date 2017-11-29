@@ -26,14 +26,14 @@ class FriendProfile extends Component {
     const { id } = this.props.match.params
     const user = await GetUserById(id)
     this.setState({
-      id: user._id || '',
-      name: user.name || '',
-      lastname: user.lastname || '',
-      email: user.email || '',
-      profileImg: user.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-      occupation: user.occupation || '',
-      country: user.country || '',
-      friends: user.friends || '',
+      id: user._id,
+      name: user.name,
+      lastname: user.lastname,
+      email: user.email,
+      profileImg: user.profileImg,
+      occupation: user.occupation,
+      country: user.country,
+      friends: user.friends,
       username: user.username
     })
   }
@@ -44,10 +44,10 @@ class FriendProfile extends Component {
     })
   }
 
-  handleMessage = async (e) => {
+  handleMessage = async () => {
     const { id } = this.props.match.params
-    const { message } = this.state
-    await SendMessage(id, message)
+    const { message, username, name, lastname } = this.state
+    await SendMessage(id, message, username, name, lastname)
     this.setState({ fireRedirect: true })
   }
 

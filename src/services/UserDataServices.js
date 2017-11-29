@@ -56,9 +56,9 @@ const GetFriendsJobs = async () => {
   return response.data
 }
 
-const SendMessage = async (id, message) => {
+const SendMessage = async (id, message, username, name, lastname) => {
   const url = `http://localhost:3005/message/${id}`
-  const response = await axios.put(url, { message }, getAuthHeader())
+  const response = await axios.put(url, { message, username, name, lastname }, getAuthHeader())
   return response.data
 }
 

@@ -27,15 +27,14 @@ class MainSection extends Component {
     const users = await GetAllUsers()
     this.setState({
       contacts: users.map(user => {
-          return ({
-            id: user._id,
-            name: user.name,
-            lastname: user.lastname,
-            profileImg: user.profileImg,
-            occupation: user.occupation
-          })
+        return ({
+          id: user._id,
+          name: user.name,
+          lastname: user.lastname,
+          profileImg: user.profileImg,
+          occupation: user.occupation
         })
-
+      })   
     })
   }
 
