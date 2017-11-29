@@ -63,11 +63,11 @@ class OccupationSearch extends Component {
     return (
       <div className='contactsByJob'>
         <Grid>
+          <NavbarHeader />
           <Well>{ showMessage() }</Well>
           { this.state.contacts.map((contact, index) => {
             return (
               <div key={index} >
-                <NavbarHeader ProfileImage={contact.profileImg} />
                 <Row>
                   <Col sm={12} className='form-my-account'>
                     <Form>

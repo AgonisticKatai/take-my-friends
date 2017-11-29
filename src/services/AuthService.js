@@ -8,7 +8,8 @@ const login = async (email, password) => {
 
 const register = async (email, password) => {
   const url = 'http://localhost:3005/register'
-  await axios.post(url, { email, password })
+  const response = await axios.post(url, { email, password })
+  return response.data
 }
 
 const getAuthHeader = () => {
@@ -22,4 +23,10 @@ const getAuthHeader = () => {
   })
 }
 
-export { login, register, getAuthHeader }
+async function loginWithLinkedIn () {
+  const url = 'http://localhost:3005/auth/linkedin'
+  const response = await axios.get(url)
+  return response.data
+}
+
+export { login, register, getAuthHeader, loginWithLinkedIn }

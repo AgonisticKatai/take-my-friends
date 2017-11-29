@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Thumbnail, Button } from 'react-bootstrap'
 
-import { getAllUsers, AddFriend } from 'services/UserDataServices.js'
+import { GetAllUsers, AddFriend } from 'services/UserDataServices.js'
 
 import './Suggestions.css'
 
 class SuggestionsHome extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
+      addFriend: false,
       id: '',
       fireRedirect: false,
       contacts: [{
@@ -22,10 +23,21 @@ class SuggestionsHome extends Component {
     }
   }
 
-  componentWillMount = async () => {
-    const data = await getAllUsers()
+  componentDidMount = async () => {
+    await this.getAllUsers()
+  }
+
+  componentDidUpdate = async () => {
+    if (this.state.addFriend) {
+      await this.getAllUsers()
+    }
+  }
+
+  getAllUsers = async () => {
+    const data = await GetAllUsers()
     this.setState({
-      contacts: data.map(function (contact) {
+      addFriend: false,
+      contacts: data.map(contact => {
         return ({
           id: contact._id || '',
           name: contact.name || '',
@@ -43,7 +55,8 @@ class SuggestionsHome extends Component {
 
   handleFriend = async (id) => {
     await AddFriend(id)
-    this.setState({ fireRedirect: true })
+    this.setState({ addFriend: true })
+    this.props.addFriend(true)
   }
 
   render () {

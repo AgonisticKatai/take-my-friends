@@ -8,8 +8,14 @@ const AddFriend = async (_id) => {
   return response.data
 }
 
-const getAllUsers = async () => {
+const GetAllUsers = async () => {
   const url = 'http://localhost:3005/users'
+  const response = await axios.get(url, getAuthHeader())
+  return response.data
+}
+
+const GetSuggestions = async () => {
+  const url = 'http://localhost:3005/suggestions'
   const response = await axios.get(url, getAuthHeader())
   return response.data
 }
@@ -80,4 +86,4 @@ const RemoveOutboxMessageById = async (id) => {
   return response.data
 }
 
-export { AddFriend, getAllUsers, getFriends, GetInboxMessages, GetUserById, GetUserProfile, SendMessage, UpdateProfile, GetUserByjob, GetFriendsJobs, GetOutboxMessages, RemoveInboxMessageById, RemoveOutboxMessageById }
+export { AddFriend, GetAllUsers, GetSuggestions, getFriends, GetInboxMessages, GetUserById, GetUserProfile, SendMessage, UpdateProfile, GetUserByjob, GetFriendsJobs, GetOutboxMessages, RemoveInboxMessageById, RemoveOutboxMessageById }

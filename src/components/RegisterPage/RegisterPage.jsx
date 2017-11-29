@@ -49,7 +49,9 @@ class RegisterPage extends Component {
                           placeholder='Enter email'
                           name='email' data-email={this.handleChange}
                           value={this.state.email}
-                          onChange={this.handleChange} />
+                          onChange={this.handleChange}
+                          required={true}
+                        />
                       </FormGroup>
                     </Col>
                     <Col sm={12}>
@@ -60,7 +62,9 @@ class RegisterPage extends Component {
                           placeholder='Enter password'
                           name='password'
                           value={this.state.password}
-                          onChange={this.handleChange} />
+                          onChange={this.handleChange}
+                          required={true}
+                        />
                       </FormGroup>
                     </Col>
                     <Col md={12}>

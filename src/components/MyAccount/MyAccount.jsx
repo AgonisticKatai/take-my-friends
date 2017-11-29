@@ -74,6 +74,7 @@ class MyAccount extends Component {
                         name='name'
                         value={this.state.name}
                         onChange={this.handleChange}
+                        required={true}
                       />
                     </InputGroup>
                   </FormGroup>
@@ -91,6 +92,7 @@ class MyAccount extends Component {
                         name='lastname'
                         value={this.state.lastname}
                         onChange={this.handleChange}
+                        required={true}
                       />
                     </InputGroup>
                   </FormGroup>
@@ -108,6 +110,7 @@ class MyAccount extends Component {
                         name='email'
                         value={this.state.email}
                         onChange={this.handleChange}
+                        required={true}
                       />
                     </InputGroup>
                   </FormGroup>
@@ -125,6 +128,7 @@ class MyAccount extends Component {
                         name='occupation'
                         value={this.state.occupation}
                         onChange={this.handleChange}
+                        required={true}
                       />
                     </InputGroup>
                   </FormGroup>
@@ -141,6 +145,7 @@ class MyAccount extends Component {
                         name='profileImg'
                         value={this.state.profileImg}
                         onChange={this.handleChange}
+                        required={true}
                       />
                     </InputGroup>
                   </FormGroup>

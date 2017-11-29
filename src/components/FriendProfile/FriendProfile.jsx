@@ -137,7 +137,13 @@ class FriendProfile extends Component {
                 <Col sm={6} smOffset={6}>
                   <FormGroup controlId='formControlsTextarea'>
                     <ControlLabel>Send a message to {this.state.name}, sure it can help you!!</ControlLabel>
-                    <FormControl componentClass='textarea' rows='5' onChange={this.handleChange} placeholder='enter your message here...' />
+                    <FormControl
+                      componentClass='textarea'
+                      rows='5'
+                      onChange={this.handleChange}
+                      placeholder='enter your message here...'
+                      required={true}
+                    />
                   </FormGroup>
                 </Col>
                 <Col sm={3} smOffset={9}>

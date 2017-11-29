@@ -17,6 +17,7 @@ const Main = () => {
         <Route exact path='/' component={LoginPage} />
         <Route path='/login' component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
+        <Route path='/auth/linkedin/callback' />
         <PrivateRoute path='/home' component={Home} />
         <PrivateRoute path='/account' component={MyAccount} />
         <PrivateRoute path='/profile/:id' component={UserProfile} />

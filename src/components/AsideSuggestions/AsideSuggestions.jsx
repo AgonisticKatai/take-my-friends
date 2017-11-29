@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import { getFriends } from 'services/UserDataServices.js'
+import { GetSuggestions } from 'services/UserDataServices.js'
 
-import './AsideFriends.css'
+import './AsideSuggestions.css'
 
-class AsideFriends extends Component {
+class AsideSuggestions extends Component {
   constructor () {
     super()
     this.state = {
@@ -20,28 +20,28 @@ class AsideFriends extends Component {
   }
 
   componentWillMount = async () => {
-    const data = await getFriends()
+    const data = await GetSuggestions()
     this.setState({
-      contacts: data.map(contact => {
+      contacts: data.map(suggestion => {
         return ({
-          id: contact._id || '',
-          name: contact.name || '',
-          lastname: contact.lastname || 'Anonymous',
-          profileImg: contact.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png'
+          id: suggestion._id,
+          name: suggestion.name,
+          lastname: suggestion.lastname,
+          profileImg: suggestion.profileImg
         })
       })
     })
   }
 
   componentWillReceiveProps = async (nextProps) => {
-    const newData = await getFriends()
+    const newData = await GetSuggestions()
     this.setState({
-      contacts: newData.map(contact => {
+      contacts: newData.map(suggestion => {
         return ({
-          id: contact._id || '',
-          name: contact.name || '',
-          lastname: contact.lastname || 'Anonymous',
-          profileImg: contact.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png'
+          id: suggestion._id,
+          name: suggestion.name,
+          lastname: suggestion.lastname,
+          profileImg: suggestion.profileImg
         })
       })
     })
@@ -55,7 +55,7 @@ class AsideFriends extends Component {
     const { fireRedirect, id } = this.state
     return (
       <div className='AsideFriends'>
-        <h3>My friends (<span>{this.state.contacts.length}</span>)</h3>
+        <h3>Do you know them? (<span>{this.state.contacts.length}</span>)</h3>
         <ul className='Aside-friends-list nav nav-pills nav-stacked' >
           {this.state.contacts.map((userData, index) => {
             return (
@@ -77,4 +77,4 @@ class AsideFriends extends Component {
   }
 }
 
-export default AsideFriends
+export default AsideSuggestions

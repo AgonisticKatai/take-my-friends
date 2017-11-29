@@ -70,7 +70,6 @@ class UserProfile extends Component {
                       </InputGroup.Addon>
                       <FormControl
                         type='text'
-                        placeholder='Enter name'
                         name='name'
                         value={this.state.name}
                         disabled
@@ -87,7 +86,6 @@ class UserProfile extends Component {
                       </InputGroup.Addon>
                       <FormControl
                         type='text'
-                        placeholder='Enter lastname'
                         name='lastname'
                         value={this.state.lastname}
                         disabled
@@ -104,7 +102,6 @@ class UserProfile extends Component {
                       </InputGroup.Addon>
                       <FormControl
                         type='email'
-                        placeholder='Enter email'
                         name='email'
                         value={this.state.username}
                         disabled
@@ -121,7 +118,6 @@ class UserProfile extends Component {
                       </InputGroup.Addon>
                       <FormControl
                         type='text'
-                        placeholder='Enter occupation'
                         name='occupation'
                         value={this.state.occupation}
                         disabled

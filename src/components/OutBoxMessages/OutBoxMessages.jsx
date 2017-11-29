@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { Media, Button, Tabs, Tab } from 'react-bootstrap'
 import Moment from 'react-moment'
 
@@ -8,6 +9,8 @@ class OutboxMessages extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      authorId: '',
+      fireRedirect: false,
       removed: false,
       outbox: [{
         _id: '',
@@ -60,7 +63,12 @@ class OutboxMessages extends Component {
   this.setState({ removed: true })
   }
 
+  responseMessage = id => {
+    this.setState({ authorId: id, fireRedirect: true })
+  }
+
   render () {
+    const { fireRedirect, authorId } = this.state
     return (
       <div className='timeline-messages'>
         { this.state.outbox.map((outbox_conversation, index) => {
@@ -68,16 +76,16 @@ class OutboxMessages extends Component {
             outbox_conversation.messages.map((outbox_message, index) => {
               return (
                 <Media key={index} className='timeline-message'>
-                  <Media.Left>
-                    <img width={64} height={64} src={outbox_message.profileImg} alt='user-profile-img' />
+                  <Media.Left className='profile_hover'>
+                    <img width={64} height={64} src={outbox_message.profileImg} alt='user-profile-img' onClick={() => this.responseMessage(outbox_message.id)} />
                   </Media.Left>
                   <Media.Body className='timeline-body'>
-                    <Media.Heading>{ outbox_message.name } { outbox_message.lastname }</Media.Heading>
+                    <Media.Heading className='profile_hover' onClick={() => this.responseMessage(outbox_message.id)} >{ outbox_message.name } { outbox_message.lastname }</Media.Heading>
                     <p>{ outbox_message.message }</p>
                     <Button bsSize='xs' bsStyle='default' onClick={() => this.removeConversation(outbox_conversation._id)} className='pull-right' >
                       <span className='glyphicon glyphicon-trash' saria-hidden='true' />
                     </Button>
-                    <Button bsSize='xs' bsStyle='danger' onClick={() => this.responseMessage(outbox_message.author)} className='response-messages-button pull-right'>send another message to { outbox_message.name }</Button>
+                    <Button bsSize='xs' bsStyle='danger' onClick={() => this.responseMessage(outbox_message.id)} className='response-messages-button pull-right'>send another message to { outbox_message.name }</Button>
                     <p className='date'>message sent <Moment fromNow date={outbox_message.createdAt} /></p>
                   </Media.Body>
                 </Media>
@@ -85,6 +93,7 @@ class OutboxMessages extends Component {
             })
           )
         })}
+        { fireRedirect && authorId && <Redirect to={`/friend_profile/${authorId}`} push /> }
       </div>
     )
   }

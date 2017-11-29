@@ -10,6 +10,7 @@ class AsideJobs extends Component {
     super()
     this.state = {
       job: '',
+      newFriend: false,
       fireRedirect: false,
       jobs: []
     }
@@ -19,6 +20,15 @@ class AsideJobs extends Component {
     const data = await GetFriendsJobs()
     this.setState({
       jobs: data.map(contact => {
+        return contact || 'Jobless'
+      })
+    })
+  }
+
+  componentWillReceiveProps = async (nextProps) => {
+    const newData = await GetFriendsJobs()
+    this.setState({
+      jobs: newData.map(contact => {
         return contact || 'Jobless'
       })
     })

@@ -38,6 +38,7 @@ class InputSearchForm extends Component {
               name='occupationSearch'
               onChange={this.handleChange}
               value={this.state.occupationSearch}
+              required={true}
             />
             <FormControl.Feedback />
             <InputGroup.Button className='ButtonSubmit'>
