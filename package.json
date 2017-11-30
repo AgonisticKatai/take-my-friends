@@ -20,6 +20,7 @@
     "react-slick": "^0.15.4"
   },
   "scripts": {
+    "prestart": "npm install",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
