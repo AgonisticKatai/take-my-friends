@@ -32,7 +32,6 @@ class FriendProfile extends Component {
       email: user.email,
       profileImg: user.profileImg,
       occupation: user.occupation,
-      country: user.country,
       friends: user.friends,
       username: user.username
     })
@@ -152,14 +151,14 @@ class FriendProfile extends Component {
                       onClick={this.handleMessage}
                       bsStyle='primary'
                       block>
-                      Send message
+                      Send message to {this.state.name}
                     </Button>
                   </FormGroup>
                 </Col>
               </Form>
             </Col>
           </Row>
-        </Grid>
+        </Grid>       
         { fireRedirect && <Redirect to={'/home'} push /> }
       </div>
     )

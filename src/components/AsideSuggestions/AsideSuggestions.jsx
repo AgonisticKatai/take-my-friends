@@ -56,6 +56,7 @@ class AsideSuggestions extends Component {
     return (
       <div className='AsideFriends'>
         <h3>Do you know them? (<span>{this.state.contacts.length}</span>)</h3>
+        <p>Connect with friends of your friends</p>
         <ul className='Aside-friends-list nav nav-pills nav-stacked' >
           {this.state.contacts.map((userData, index) => {
             return (

@@ -39,6 +39,7 @@ class AsideJobs extends Component {
     return (
       <div className='AsideJobs'>
         <h3>Categories (<span>{ this.state.jobs.length }</span>)</h3>
+        <p>Found these jobs among your friends</p>
         <ul className='Aside-jobs-list nav nav-pills nav-stacked'>
           { this.state.jobs.map((job, index) => {
             return (

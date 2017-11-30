@@ -148,7 +148,7 @@ class OccupationSearch extends Component {
                             onClick={() => {this.handleMessage(contact.id)}}
                             bsStyle='primary'
                             block>
-                            Send a message
+                            Send message to {contact.name} 
                           </Button>
                         </FormGroup>
                       </Col>

@@ -7,6 +7,7 @@ import InputSearchForm from 'components/InputSearchForm/InputSearchForm.jsx'
 import Timeline from 'components/Timeline/Timeline.jsx'
 import AsideFriends from 'components/AsideFriends/AsideFriends.jsx'
 import AsideSuggestions from 'components/AsideSuggestions/AsideSuggestions.jsx'
+
 import { GetAllUsers } from 'services/UserDataServices.js'
 
 import './MainSection.css'

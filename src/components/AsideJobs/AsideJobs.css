@@ -23,6 +23,10 @@
 /*  padding-left: 15px;*/
 }
 
+.AsideJobs > p {
+  text-align: left;
+}
+
 .AsideJobs > h3 > span {
   color: #337ab7;
 }

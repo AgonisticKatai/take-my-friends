@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Media, Button, Tabs, Tab } from 'react-bootstrap'
+import { Media, Button } from 'react-bootstrap'
 import Moment from 'react-moment'
 
 import { GetOutboxMessages, RemoveOutboxMessageById } from 'services/UserDataServices.js'

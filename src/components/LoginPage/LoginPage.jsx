@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Row, Image, Jumbotron, Grid, ControlLabel, Form, Col, FormGroup, FormControl, Button } from 'react-bootstrap'
+import { Row, Jumbotron, Grid, ControlLabel, Form, Col, FormGroup, FormControl, Button } from 'react-bootstrap'
 
 import { saveToken } from 'services/StorageService.js'
 import { login } from 'services/AuthService.js'

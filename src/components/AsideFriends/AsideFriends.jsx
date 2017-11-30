@@ -38,10 +38,10 @@ class AsideFriends extends Component {
     this.setState({
       contacts: newData.map(contact => {
         return ({
-          id: contact._id || '',
-          name: contact.name || '',
-          lastname: contact.lastname || 'Anonymous',
-          profileImg: contact.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png'
+          id: contact._id,
+          name: contact.name,
+          lastname: contact.lastname,
+          profileImg: contact.profileImg
         })
       })
     })
@@ -56,6 +56,7 @@ class AsideFriends extends Component {
     return (
       <div className='AsideFriends'>
         <h3>My friends (<span>{this.state.contacts.length}</span>)</h3>
+        <p>View friends profile and send a message</p>
         <ul className='Aside-friends-list nav nav-pills nav-stacked' >
           {this.state.contacts.map((userData, index) => {
             return (
