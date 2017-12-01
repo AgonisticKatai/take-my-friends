@@ -39,11 +39,11 @@ class SuggestionsHome extends Component {
       addFriend: false,
       contacts: data.map(contact => {
         return ({
-          id: contact._id || '',
-          name: contact.name || '',
-          lastname: contact.lastname || '',
-          profileImg: contact.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-          occupation: contact.occupation || ''
+          id: contact._id,
+          name: contact.name,
+          lastname: contact.lastname,
+          profileImg: contact.profileImg,
+          occupation: contact.occupation
         })
       })
     })

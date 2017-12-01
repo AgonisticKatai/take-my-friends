@@ -1,22 +1,25 @@
 @media(max-width: 480px) {
   .thumbnail-suggestion {
     height: 290px;
-/*    margin-top: 80px;*/
     width: 130px;
     padding: 8px;
   }
+
   .thumbnail-suggestion h3 {
     font-size: 20px;
     margin: 0;
   }
+
   .thumbnail-suggestion p {
     font-size: 15px;
     margin-top: 7px;
     text-align: left;
   }
+
   .thumbnail-suggestion .caption {
     padding: 5px 0;
   }
+
   .thumbnail-suggestion > img, .thumbnail-suggestion a > img {
     width: 120px;
     height: 120px;
@@ -33,21 +36,16 @@
   margin-right: 30px;
 }
 
-
 @media(min-width: 768px) {
-  .thumbnail-suggestion {    
-/*    margin-top: 100px;*/
-  }
   .thumbnail-suggestion h3 {
     margin: 0;
   }
+
   .thumbnail-suggestion p {
     text-align: left;
     margin-top: 5px;
   }
-  .thumbnail-suggestion .caption {
 
-  }
   .thumbnail-suggestion > img, .thumbnail-suggestion a > img {
     width: 155px;
     height: 155px;

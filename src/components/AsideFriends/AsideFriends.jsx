@@ -24,10 +24,10 @@ class AsideFriends extends Component {
     this.setState({
       contacts: data.map(contact => {
         return ({
-          id: contact._id || '',
-          name: contact.name || '',
-          lastname: contact.lastname || 'Anonymous',
-          profileImg: contact.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png'
+          id: contact._id,
+          name: contact.name,
+          lastname: contact.lastname,
+          profileImg: contact.profileImg
         })
       })
     })

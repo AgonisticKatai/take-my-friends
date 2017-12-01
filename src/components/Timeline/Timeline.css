@@ -1,5 +1,4 @@
 .Timeline-content {
-/*  border-top: 5px solid #337ab7;*/
   padding: 10px;
 }
 
@@ -23,7 +22,6 @@
 
 .timeline-message {
   padding: 10px;
-/*  box-shadow: 10px 10px 20px grey;*/
 }
 
 .timeline-message:hover {

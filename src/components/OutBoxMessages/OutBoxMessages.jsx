@@ -45,12 +45,12 @@ class OutboxMessages extends Component {
           _id: outbox._id,
           messages: outbox.messages.map(message => {
             return ({
-              id: message.adresseer._id || '',
-              name: message.adresseer.name || '',
-              lastname: message.adresseer.lastname || '',
-              profileImg: message.adresseer.profileImg || '',
-              message: message.body || '',
-              createdAt: message.createdAt || ''
+              id: message.adresseer._id,
+              name: message.adresseer.name,
+              lastname: message.adresseer.lastname,
+              profileImg: message.adresseer.profileImg,
+              message: message.body,
+              createdAt: message.createdAt
             })
           })
         })
@@ -60,7 +60,7 @@ class OutboxMessages extends Component {
 
   removeConversation = async (id) => {
     await RemoveOutboxMessageById(id)
-  this.setState({ removed: true })
+    this.setState({ removed: true })
   }
 
   responseMessage = id => {

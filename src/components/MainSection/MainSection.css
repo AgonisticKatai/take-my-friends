@@ -1,12 +1,8 @@
 * {
   background-image: none;
-
-/*font-family: 'Hind Guntur', sans-serif;*/
-font-family: 'Archivo', sans-serif;
-
-
-
+  font-family: 'Archivo', sans-serif;
 }
+
 .no-padding {
   padding: 0;
   margin: 0;

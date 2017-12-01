@@ -27,14 +27,14 @@ class UserProfile extends Component {
     const { id } = this.props.match.params
     const user = await GetUserById(id)
     this.setState({
-      id: user._id || '',
-      name: user.name || '',
-      lastname: user.lastname || '',
-      email: user.email || '',
+      id: user._id,
+      name: user.name,
+      lastname: user.lastname,
+      email: user.email,
       profileImg: user.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-      occupation: user.occupation || '',
-      country: user.country || '',
-      friends: user.friends || '',
+      occupation: user.occupation,
+      country: user.country,
+      friends: user.friends,
       username: user.username
     })
   }

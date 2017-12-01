@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router'
+
 import { getToken } from 'services/StorageService'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (

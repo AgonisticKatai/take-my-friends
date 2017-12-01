@@ -1,5 +1,5 @@
 .content-register {
-  background-image: url('../../images/photo3.jpg');
+  background-image: url('https://i.imgur.com/zAYxppW.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
@@ -20,5 +20,5 @@ h2 {
 }
 
 .registerSubmit {
-margin-top: 50px;
+  margin-top: 50px;
 }

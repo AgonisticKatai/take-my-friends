@@ -28,14 +28,13 @@ class Home extends Component {
     const user = await GetUserProfile()
     this.setState({
       profile: {
-        id: user._id || '',
-        username: user.username || '',
-        name: user.name || '',
-        lastname: user.lastname || '',
-        email: user.email || '',
-        profileImg: user.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-        occupation: user.occupation || '',
-        country: user.country || '',
+        id: user._id,
+        username: user.username,
+        name: user.name,
+        lastname: user.lastname,
+        email: user.email,
+        profileImg: user.profileImg,
+        occupation: user.occupation,
         friends: user.friends || []
       }
     })

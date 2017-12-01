@@ -47,12 +47,12 @@ class InboxMessages extends Component {
           _id: inbox._id,
           messages: inbox.messages.map(message => {
             return ({
-              id: message.author._id || '',
-              name: message.author.name || '',
-              lastname: message.author.lastname || '',
-              profileImg: message.author.profileImg || '',
-              message: message.body || '',
-              createdAt: message.createdAt || ''
+              id: message.author._id,
+              name: message.author.name,
+              lastname: message.author.lastname,
+              profileImg: message.author.profileImg,
+              message: message.body,
+              createdAt: message.createdAt
             })
           })
         })

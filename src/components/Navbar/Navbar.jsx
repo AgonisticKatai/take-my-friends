@@ -44,10 +44,7 @@ class NavbarHeader extends Component {
           <Nav>
             <LinkContainer to='/about' >
               <NavItem eventKey={1}>About</NavItem>
-            </LinkContainer>
-            <LinkContainer to='/contact'>
-              <NavItem eventKey={2}>Contact</NavItem>
-            </LinkContainer>         
+            </LinkContainer>        
           </Nav>
           <Nav pullRight>
             <LinkContainer to='/account'>

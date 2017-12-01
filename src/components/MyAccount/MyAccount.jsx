@@ -24,13 +24,13 @@ class MyAccount extends Component {
   componentWillMount = async () => {
     const user = await GetUserProfile()
     this.setState({
-      id: user._id || '',
-      name: user.name || '',
-      lastname: user.lastname || '',
-      email: user.email || '',
+      id: user._id,
+      name: user.name,
+      lastname: user.lastname,
+      email: user.email,
       profileImg: user.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-      occupation: user.occupation || '',
-      country: user.country || ''
+      occupation: user.occupation,
+      country: user.country
     })
   }
 
@@ -41,8 +41,9 @@ class MyAccount extends Component {
   }
 
   handleSubmit = async (e) => {
+    const { name, lastname, email, profileImg, occupation } = this.state
     e.preventDefault()
-    await UpdateProfile(this.state.name, this.state.lastname, this.state.email, this.state.profileImg, this.state.occupation)
+    await UpdateProfile(name, lastname, email, profileImg, occupation)
     this.setState({ fireRedirect: true })
   }
 

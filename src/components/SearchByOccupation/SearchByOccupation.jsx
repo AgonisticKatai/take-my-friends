@@ -32,12 +32,12 @@ class OccupationSearch extends Component {
     this.setState({
       contacts: data.map(function (contact) {
         return ({
-          id: contact._id || '',
-          name: contact.name || '',
-          lastname: contact.lastname || '',
-          profileImg: contact.profileImg || 'http://www.cdn.innesvienna.net//Content/user-default.png',
-          occupation: contact.occupation || '',
-          username: contact.username || ''
+          id: contact._id,
+          name: contact.name,
+          lastname: contact.lastname,
+          profileImg: contact.profileImg,
+          occupation: contact.occupation,
+          username: contact.username
         })
       })
     })

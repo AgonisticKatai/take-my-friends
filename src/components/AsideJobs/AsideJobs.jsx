@@ -20,7 +20,7 @@ class AsideJobs extends Component {
     const data = await GetFriendsJobs()
     this.setState({
       jobs: data.map(contact => {
-        return contact || 'Jobless'
+        return contact
       })
     })
   }
@@ -29,7 +29,7 @@ class AsideJobs extends Component {
     const newData = await GetFriendsJobs()
     this.setState({
       jobs: newData.map(contact => {
-        return contact || 'Jobless'
+        return contact
       })
     })
   }
