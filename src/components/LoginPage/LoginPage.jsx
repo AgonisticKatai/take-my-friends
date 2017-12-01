@@ -68,7 +68,7 @@ class LoginPage extends Component {
                         />
                       </FormGroup>
                     </Col>
-                    <Col md={12}>
+                    <Col xs={12}>
                       <FormGroup>
                         <Button
                           type='submit'

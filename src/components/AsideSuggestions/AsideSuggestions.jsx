@@ -72,7 +72,7 @@ class AsideSuggestions extends Component {
             )
           })}
         </ul>
-        { fireRedirect && id && <Redirect to={`/friend_profile/${id}`} push /> }
+        { fireRedirect && id && <Redirect to={`/profile/${id}`} push /> }
       </div>
     )
   }

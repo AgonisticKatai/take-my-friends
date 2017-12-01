@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Navbar, NavItem, Image, NavDropdown, MenuItem, Nav } from 'react-bootstrap'
+import { Navbar, NavItem, Image, MenuItem, Nav } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
 import { GetUserProfile } from 'services/UserDataServices.js'
@@ -27,7 +27,7 @@ class NavbarHeader extends Component {
     })
   }
 
-  logOut = () => {
+  handleLogOut = () => {
     removeToken()
   }
 
@@ -42,22 +42,19 @@ class NavbarHeader extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem eventKey={1}>About</NavItem>
-            <NavItem eventKey={2}>Contact</NavItem>
-            <NavDropdown eventKey={3} title='My profile' id='basic-nav-dropdown'>
-              <MenuItem eventKey={3.1}>Contacts</MenuItem>
-              <MenuItem eventKey={3.2}>Suggestions</MenuItem>
-              <MenuItem eventKey={3.3}>Conversations</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={3.4}>Activity</MenuItem>
-            </NavDropdown>
+            <LinkContainer to='/about' >
+              <NavItem eventKey={1}>About</NavItem>
+            </LinkContainer>
+            <LinkContainer to='/contact'>
+              <NavItem eventKey={2}>Contact</NavItem>
+            </LinkContainer>         
           </Nav>
           <Nav pullRight>
             <LinkContainer to='/account'>
-              <NavItem eventKey={4}>My account</NavItem>
+              <NavItem eventKey={3}>My account</NavItem>
             </LinkContainer>
             <LinkContainer to='/login'>
-              <NavItem eventKey={5} onClick={this.logOut}>Logout</NavItem>
+              <NavItem eventKey={4} onClick={this.handleLogOut}>Logout</NavItem>
             </LinkContainer>
             <NavItem>{ this.state.name && this.state.lastname ? `Logged as ${this.state.name} ${this.state.lastname}` : '' }</NavItem>
             <Navbar.Brand>

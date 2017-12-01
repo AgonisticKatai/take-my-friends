@@ -9,6 +9,8 @@ import MyAccount from 'components/MyAccount/MyAccount.jsx'
 import UserProfile from 'components/UserProfile/UserProfile.jsx'
 import SearchByOccupation from 'components/SearchByOccupation/SearchByOccupation.jsx'
 import FriendProfile from 'components/FriendProfile/FriendProfile.jsx'
+import About from 'components/About/About.jsx'
+import Contact from 'components/Contact/Contact.jsx'
 
 const Main = () => {
   return (
@@ -17,12 +19,13 @@ const Main = () => {
         <Route exact path='/' component={LoginPage} />
         <Route path='/login' component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
-        <Route path='/auth/linkedin/callback' />
         <PrivateRoute path='/home' component={Home} />
         <PrivateRoute path='/account' component={MyAccount} />
         <PrivateRoute path='/profile/:id' component={UserProfile} />
         <PrivateRoute path='/friend_profile/:id' component={FriendProfile} />
         <PrivateRoute path='/find/:job' component={SearchByOccupation} />
+        <PrivateRoute path='/about' component={About} />
+        <PrivateRoute path='/contact' component={Contact} />
       </Switch>
     </div>
   )
